@@ -25,7 +25,7 @@ Be cautious, if you upload anything else than a cat picture and you get reported
 
 See the following image:
 
-![use_case_catsagram.png](use_case_catsagram.png)
+![use_case_catstagram.png](use_case_catstagram.png)
 
 ### Database schema
 

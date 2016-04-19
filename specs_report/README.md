@@ -1,5 +1,5 @@
-# catstagram
-Simple Cat version of Instragram in Ruby on Rails - for Webrails class at HEIG-VD
+# Catstagram
+Simple Cat version of Instagram in Ruby on Rails - for Webrails class at HEIG-VD
 
 ## Provisional Report
 
@@ -13,13 +13,13 @@ Authors:
 
 ### General Description
 
-Catstragram is a simple version of Instagram for photos of cats only. It allows registered users to upload photos of cats, tag them and share them with all their friends, because sharing is caring ;3 
+Catstagram is a simple version of Instagram for photos of cats only. It allows registered users to upload photos of cats, tag them and share them with all their friends, because sharing is caring ;3 
 
 The more you share, the more views you get! :D
 
-Guests can see cats' photos and users' photos! And cats by categories, of course!
+Guests can see photos of specific cats or uploaded by specific users! And cats by categories, of course!
 
-Be cautious, if you upload anything else than a cat photo and you get reported too many times, the admins might ban you!
+Be cautious, if you upload anything other than a cat photo and you get reported too many times, the admins might ban you!
 
 ### Usecases
 
@@ -27,30 +27,30 @@ See the following image:
 
 ![use_case_catstagram.png](use_case_catstagram.png)
 
-A guest is a non-registered or non-logged visitor of the website. It is limited to VIEW capacities on everything, but has no right to EDIT. A guest may:
+A guest is a non-registered or non-logged visitor of the website. They are limited to VIEW capacities on everything, and have no right to EDIT. A guest may:
 
-- view user and cats profile details
+- view user and cat profile details
 - search and view photos by hashtag, user or cat
-- view photos (direct link to single photo) - the view count of the photo is increased
-- create account with sign-up / login with sign-in
+- view photos (direct link to single photo), increasing the view count of the photo
+- create an account with *sign-up*, or login with *sign-in*
 
-A user is a registered and logged visitor of the website that doesn't have admin rights. A user has VIEW capabilites on everything, and EDIT capabilites on its own data. A user may:
+A user is a registered and logged visitor of the website who doesn't have admin rights. A user has VIEW capabilites on everything, and EDIT capabilites on their own data. A user may:
 
 - do everything a guest can
-- edit own user profile
-- upload or edit photo on his own account. Uploading a photo includes optionnally tagging cats and categories (hashtags). This includes create new hashtags (categories), when those available are not enough. Of course it can upload photos of cats that doesn't belong to him.
-- create or update cat profiles (of his own cats only)
-- report bad photos, like those with dogs - the report count of the photo is increased
-- like photos - the like count of the photo is increased
+- edit their own user profile
+- upload or edit photos on their own account. Uploading a photo includes optionally tagging cats and categories (hashtags). This includes creating new hashtags (categories), when those available do not suffice. Of course, they can upload photos of cats that don't belong to them.
+- create or update cat profiles (of their own cats only)
+- report bad photos, like those with dogs, increasing the report count of the photo
+- like photos, increasing the like count of the photo
 
-An admin is a registered and logged visitor of the website that does have admin rights. An admin has right to VIEW and EDIT on everything. An admin may:
+An admin is a registered and logged visitor of the website that has admin rights. An admin has the right to VIEW and EDIT on everything. An admin may:
 
-- do everything a User can
-- view the report count of a photo, recieve some kind of alerts of new reports, and reset reports count
-- decide what to do with reported photo, including banning users, when they were reported for bad behaviors
-- edit everything (CRUD actions), including remove the reported photo and the associated user, or edit any field/relation that doesn't have a special meaning.
+- do everything a user can
+- view the report count of a photo, recieve some kind of alerts of new reports, and reset report counts
+- decide what to do with reported photos, including banning users, when they were reported for bad behaviors
+- edit everything (CRUD actions), including removing reported photos and associated users, or editing any non-generated field/relation
 
-Note that views, likes and reports counts are not related to users. View counts reflects the number of times a photo was open in a browser, even if it was done 10x by the same guy. The same goes with like and reports, but those are only available for logged users. This system is open to abuse but it keeps the whole thing simple, otherwise it would require a lot more relations and a more complex system. 
+Note that views, likes and reports counts are not related to users. View counts reflects the number of times a photo was opened in a browser, even if it was done 10x by the same person. The same goes with like and reports, but those are only available for logged users. This system is open to abuse but it allows for a simpler system, otherwise it would require a lot more relations and be more complex. 
 
 ### Database schema
 
@@ -58,24 +58,25 @@ See the following image:
 
 ![db_schema_catstagram.png](db_schema_catstagram.png)
 
-A user is a registered human visitor that may have some role (and admin rights). Fields generated by Devise for account creation and authentication are not shown. Users own cats and upload photos (therefore cats belongs to their user owner, and photos are uploaded by user).
+A user is a registered human visitor that may have some role (and admin rights). Fields generated by Devise for account creation and authentication are not shown, as well as fields handled by Ruby by default. Users own cats and upload photos (therefore cats belongs to their user owner, and photos are uploaded by users).
 
-Cats are tagged on photos, and at least one cat must be tagged on the photo. If the cat is unknown, a special entity called the "Chanonyme" (Catnonymous) is tagged.
+Cats are tagged on photos, and at least one cat must be tagged on every photo. If the cat is unknown, a special entity called the "Chanonyme" (Catnonymous) is tagged instead.
 
-Hashtags are kind of categories, where any photo may belong to any number of hashtags (from 0 to N).
+Hashtags are similar to categories, where any photo may belong to any number of hashtags (from 0 to N).
 
 ### About permissions and rights
 
-The following times fields are set once and forever, and cannot be edited, even by an admin:
+The following fields are set once and forever, and cannot be edited, even by an admin:
 
-- creation_time
-- upload_time
+- id
+- created_at
+- updated_at
 
-All the counts fields cannot be edited, even by an admin, they are set to 0 by default and incremented automatically when the related action are performed. However, admin may reset the report count to 0 when handling reports. 
+All the counts fields cannot be edited, even by an admin. They are set to 0 by default and incremented automatically when the related actions are performed. However, admins may reset the report count to 0 when handling reports. 
 
-Admin may set the banned_until field to ban a user (otherwise this field is left blank). Users cannot connect until the end of the ban period.
+Admins may set the banned_until field to ban a user (otherwise this field is left blank). Users cannot connect until the end of the ban period.
 
-In all entities, their is at least one field that is mandatory. All the others are optional (or they have special meaning, explained before)
+In all entities, there is at least one field that is mandatory. All the others are optional (or they have special meaning, explained before)
 
 - username
 - title
@@ -87,17 +88,17 @@ Users may add/edit/remove all **other** data:
 
 - in their profile (username, avatar_url, biography)
 - in their cats' profile (catname, city, description, birth_time)
-- in the photo they uploaded (caption, cats tagged, hashtags tagged). The url cannot be changed though. If a user wish to change photo, it has to delete this one and upload a new one, as likes/hashtags/cats tagged may not be relevant to the new photo.
+- in a photo they uploaded (caption, cats tagged, hashtags tagged). They cannot change the image URL though. If a user wishes to change photos, they have to delete the current one and upload a new one, as likes/hashtags/cats tagged may not be relevant to the new photo.
 
 Users may remove a photo, a profile of a cat they own, or even their whole profile (deleting all data from their photos and cats).
 
-As the admin has CRUD rights on everything, it can do everything a user can on all users' data. Moreover, it has special CRUD rights (in that sense, edit means all CRUD actions)
+As the admin has CRUD rights on everything, they can do everything a user can on all users' data. Moreover, they have special CRUD rights (in that sense, edit means all CRUD actions)
 
-- The admin sets the `banned_until` field and resets the `report_count` field
-- A cat that is not owned is only editable by the admin
-- The admin may asign cats to an owner, or remove ownership
-- The admin assignes roles
-- The admin edits hashtags
+- They can set the `banned_until` field and reset the `report_count` field
+- A cat without an owner is only editable by an admin
+- They may assign cats to an owner, or remove ownership
+- They may assign roles
+- They may edit hashtags
 
 
 ### Iterations plan

@@ -1,0 +1,19 @@
+- creation/edition forms for (including relations):
+  - cat
+  - user
+  - photo
+  - hashtag
+- simple index display for:
+  - cat
+  - user
+  - photo
+  - hashtag
+- simple item display for:
+  - cat
+  - user
+  - photo
+  - hashtag
+- automatic hashtag creation (from specific text box)
+- catnonymous
+- implement like/report count
+- implement view count

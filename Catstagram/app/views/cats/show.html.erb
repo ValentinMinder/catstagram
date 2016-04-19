@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Catname:</strong>
+  <%= @cat.catname %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @cat.description %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @cat.city %>
+</p>
+
+<p>
+  <strong>Birth time:</strong>
+  <%= @cat.birth_time %>
+</p>
+
+<%= link_to 'Edit', edit_cat_path(@cat) %> |
+<%= link_to 'Back', cats_path %>

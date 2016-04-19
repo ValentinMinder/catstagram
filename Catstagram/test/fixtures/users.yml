@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  username: MyString
+  avatar_url: MyString
+  biography: MyText
+  banned_until: 2016-04-19
+
+two:
+  username: MyString
+  avatar_url: MyString
+  biography: MyText
+  banned_until: 2016-04-19

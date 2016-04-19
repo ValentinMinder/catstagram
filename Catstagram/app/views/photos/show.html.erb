@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @photo.image_url %>
+</p>
+
+<p>
+  <strong>Caption:</strong>
+  <%= @photo.caption %>
+</p>
+
+<p>
+  <strong>View count:</strong>
+  <%= @photo.view_count %>
+</p>
+
+<p>
+  <strong>Like count:</strong>
+  <%= @photo.like_count %>
+</p>
+
+<p>
+  <strong>Report count:</strong>
+  <%= @photo.report_count %>
+</p>
+
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>

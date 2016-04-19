@@ -1,0 +1,12 @@
+rails new Catstagram -d mysql
+
+rails g scaffold User username:string avatar_url:string biography:text banned_until:datetime
+rails g scaffold Cat catname:string description:text city:string birth_time:date
+rails g scaffold Photo image_url:string caption:text view_count:integer like_count:integer report_count:integer
+rails g scaffold Hashtag tag:string
+
+rails g migration CreateJoinTablePhotoCat photo cat
+rails g migration CreateJoinTablePhotoHashtag photo hashtag
+
+rails g migration AddUserToPhotos user:references
+rails g migration AddUserToCats user:references

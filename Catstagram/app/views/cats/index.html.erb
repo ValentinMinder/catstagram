@@ -21,7 +21,7 @@
         <td><%= cat.description %></td>
         <td><%= cat.city %></td>
         <td><%= cat.birth_time %></td>
-        <td><%= cat.user.username %></td>
+        <td><%= cat.user.username if cat.user %></td>
         <td><%= link_to 'Show', cat %></td>
         <td><%= link_to 'Edit', edit_cat_path(cat) %></td>
         <td><%= link_to 'Destroy', cat, method: :delete, data: { confirm: 'Are you sure?' } %></td>

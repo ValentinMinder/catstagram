@@ -1,9 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Catname:</strong>
-  <%= @cat.catname %>
-</p>
+<h1><%= @cat.catname %></h1>
 
 <p>
   <strong>Description:</strong>
@@ -18,6 +15,18 @@
 <p>
   <strong>Birth time:</strong>
   <%= @cat.birth_time %>
+</p>
+
+<p>
+  <strong>Featured in:</strong>
+  <ul>
+    <% unless @cat.photos.any? %>
+      No photos yet!
+    <% end %>
+    <% @cat.photos.each do |photo| %>
+      <li><%= photo.image_url %>
+    <% end %>
+  <ul>
 </p>
 
 <%= link_to 'Edit', edit_cat_path(@cat) %> |

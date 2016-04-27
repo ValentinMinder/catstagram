@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :catname %><br>
+    <%= f.label :catname, 'Cat Name' %><br>
     <%= f.text_field :catname %>
   </div>
   <div class="field">
@@ -25,7 +25,19 @@
   </div>
   <div class="field">
     <%= f.label :birth_time %><br>
-    <%= f.date_select :birth_time %>
+    <%= f.date_select :birth_time, :order => [:day, :month, :year], :start_year => 1990, :end_year => Date.today.year %>
+  </div>
+  <div class="btn-group" data-toggle="buttons-radio">
+    Is this your cat?<br>
+    <%= f.radio_button :user_id, 1, :id=>"moi", :style=>"display:none;" %>
+    <label for="Yes" class="btn btn-primary">1: Yes</label>
+    <%= f.radio_button :user_id, 2, :id=>"pas moi", :style=>"display:none;" %>
+    <label for="No" class="btn btn-primary">2: No</label>
+  </div>
+  
+  <div class="field">
+    <%= f.label :user_id, 'Owner' %><br>
+    <%= f.collection_select :user_id, User.all, :id, :username %>
   </div>
   <div class="actions">
     <%= f.submit %>

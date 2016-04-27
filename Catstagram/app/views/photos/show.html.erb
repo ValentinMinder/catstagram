@@ -1,29 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Image url:</strong>
-  <%= @photo.image_url %>
+  <img src="<%= @photo.image_url %>">
 </p>
 
 <p>
-  <strong>Caption:</strong>
+  <%= "by " + @photo.user.username if @photo.user%>
+</p>
+
+<p>
   <%= @photo.caption %>
 </p>
 
 <p>
-  <strong>View count:</strong>
-  <%= @photo.view_count %>
+  <%= @photo.view_count %> <%= (@photo.view_count == 1) ? "view" : "views" %>
 </p>
 
 <p>
-  <strong>Like count:</strong>
-  <%= @photo.like_count %>
+  <%= @photo.like_count %> <%= (@photo.like_count == 1) ? "like" : "likes" %>
 </p>
 
-<p>
-  <strong>Report count:</strong>
-  <%= @photo.report_count %>
-</p>
+
 
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
 <%= link_to 'Back', photos_path %>

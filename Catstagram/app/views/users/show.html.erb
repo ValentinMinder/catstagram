@@ -4,7 +4,7 @@
 
 <p>
   <% if (@user.avatar_url != "") %>
-  	<img src="<%=@user.avatar_url%>" alt="Avatar ALT" style="height:100px;">
+  	<img src="<%=@user.avatar_url%>" alt="broken avatar link" style="height:100px;">
   <% end %>
 </p>
 
@@ -30,6 +30,21 @@
   <%= @user.cats.count %>
 </p>
 
+<p>
+  Admin panel: 
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>
+
+<p>
+  Ban interface:
+  <% if (@user.is_banned) %>
+    User is BANNED until <%= @user.banned_until %>.
+  <% else %>
+    User is not banned.
+  <% end %>
+  <%= link_to 'Ban user menu', ban_user_path(@user) %>
+</p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :ban, :ban_update]
 
   # GET /users
   # GET /users.json
@@ -19,6 +19,30 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+  end
+
+  # GET /users/1/ban
+  # Automatically renders ban.html.erb
+  def ban
+  end
+
+  # PATCH/PUT /users/1/ban
+  # PATCH/PUT /users/1.json/ban
+  # Allows the update of banned_until field 
+  def ban_update
+    respond_to do |format|
+      if @user.update(ban_params)
+        format.json { render :ban, status: :ok, location: @user }
+        if @user.is_banned
+          format.html { redirect_to @user, notice: 'User was successfully banned.' }
+        else 
+          format.html { redirect_to @user, notice: 'User was successfully unbanned.' }
+        end
+      else
+        format.html { render :ban }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # POST /users
@@ -67,8 +91,14 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
+    # Ban may only edit banned_until param
+    def ban_params
+      params.require(:user).permit(:banned_until)
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
+    # Does not allow :banned_until parameter
     def user_params
-      params.require(:user).permit(:username, :avatar_url, :biography, :banned_until)
+      params.require(:user).permit(:username, :avatar_url, :biography)
     end
 end

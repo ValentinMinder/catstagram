@@ -3,6 +3,13 @@ Rails.application.routes.draw do
   resources :photos
   resources :cats
   resources :users
+
+  # get the ban form / update the ban status of a user
+  get 'users/:id/ban', to: 'users#ban', as:'ban_user'
+  put 'users/:id/ban', to: 'users#ban_update', as:'ban_update_user'
+  patch 'users/:id/ban' => 'users#ban_update'
+  post 'users/:id/ban' => 'users#ban_update'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

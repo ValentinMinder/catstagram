@@ -1,0 +1,25 @@
+<h1>Ban User <%= @user.username %></h1>
+
+<%= form_for @user, url: {controller: "users", action: "ban_update"}, method: "put", class: "ban_form" do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- date : Time.now + 1.days + 1.weeks -->
+  <%= date_field(:user, :banned_until) %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>

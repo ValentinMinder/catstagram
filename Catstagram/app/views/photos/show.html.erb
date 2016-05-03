@@ -20,6 +20,14 @@
   <%= @photo.like_count %> <%= (@photo.like_count == 1) ? "like" : "likes" %>
 </p>
 
+<p>
+  <strong>Cats featured in this photo:</strong>
+  <ul>
+  <% @photo.cats.each do |cat| %>
+    <li><%= link_to cat.catname, cat %>
+  <% end %>
+  </ul>
+</p>
 
 
 <%= link_to 'Edit', edit_photo_path(@photo) %> |

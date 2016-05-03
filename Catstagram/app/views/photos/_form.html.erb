@@ -18,6 +18,11 @@
   <i>^ to be replaced with upload button!</i><br><br>
   
   <div class="field">
+    <%= f.label 'Cats on photo' %><br>
+    <%= f.collection_select :cat_ids, Cat.all, :id, :catname, {}, {:multiple => true} %>
+  </div>
+  
+  <div class="field">
     <%= f.label :caption %><br>
     <%= f.text_area :caption %>
   </div>

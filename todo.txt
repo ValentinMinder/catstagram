@@ -1,19 +1,25 @@
+Iteration #1
+------------
 - creation/edition forms for (including relations):
-  - cat
+  - cat (DONE - need to edit when user logins are implemented)
   - user
-  - photo
+  - photo (DONE - need to edit when user logins are implemented)
   - hashtag
 - simple index display for:
-  - cat
+  - cat (DONE)
   - user
-  - photo
+  - photo (DONE)
   - hashtag
 - simple item display for:
-  - cat
+  - cat (DONE)
   - user
-  - photo
+  - photo (DONE)
   - hashtag
 - automatic hashtag creation (from specific text box)
 - catnonymous
 - implement like/report count
-- implement view count
+- implement view count (DONE)
+
+Iteration #2
+------------
+TBA

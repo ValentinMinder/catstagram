@@ -24,10 +24,12 @@
       No photos yet!
     <% end %>
     <% @cat.photos.each do |photo| %>
-      <li><%= photo.image_url %>
+      <li><%= link_to "PHOTO #" + photo.id.to_s, photo %>
     <% end %>
   <ul>
 </p>
 
+<p>
 <%= link_to 'Edit', edit_cat_path(@cat) %> |
 <%= link_to 'Back', cats_path %>
+</p>

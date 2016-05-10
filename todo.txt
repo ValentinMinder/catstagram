@@ -1,5 +1,5 @@
-Iteration #1
-------------
+Iteration #1 - Due 03.05.2016
+-----------------------------
 - creation/edition forms for (including relations):
   - cat (DONE - need to edit when user logins are implemented)
   - user
@@ -20,8 +20,8 @@ Iteration #1
 - implement like/report count
 - implement view count (DONE)
 
-Iteration #2
-------------
+Iteration #2 - Due 17.05.2016
+-----------------------------
 - account creation
 - account authentication
 - account permissions:
@@ -31,11 +31,11 @@ Iteration #2
   - hashtag
 - photo upload form, including:
   - actual upload (DONE)
-  - cat tagging
+  - cat tagging (DONE in basic way)
   - hashtags
   
-Iteration #3
-------------
+Iteration #3 - Due 07.06.2016
+-----------------------------
 - hashtag autocompletion (upload form)
 - asynchronous like count update (ONLY taking into account current user)
 - prettify upload form

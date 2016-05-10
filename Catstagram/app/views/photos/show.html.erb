@@ -5,7 +5,7 @@
 </p>
 
 <p>
-  <%= "by " + @photo.user.username if @photo.user%>
+  <%= link_to "by " + @photo.user.username, @photo.user if @photo.user %>
 </p>
 
 <p>

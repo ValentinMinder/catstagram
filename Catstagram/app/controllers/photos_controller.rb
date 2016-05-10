@@ -72,6 +72,7 @@ class PhotosController < ApplicationController
     def photo_params
       params.require(:photo).permit(:image_url, :caption,
                                     :view_count, :like_count, :report_count,
+                                    :remove_image_url,
                                     :cat_ids => [])
     end
 end

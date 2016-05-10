@@ -10,3 +10,5 @@ rails g migration CreateJoinTablePhotoHashtag photo hashtag
 
 rails g migration AddUserToPhotos user:references
 rails g migration AddUserToCats user:references
+
+rails g uploader Image

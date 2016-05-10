@@ -12,8 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :image_url %><br>
-    <%= f.text_field :image_url %>
+    <% if f.object.image_url? %>
+      <%= image_tag f.object.image_url %><br>
+    <% else %>
+      <%= f.label :image_url %><br>
+    <% end %>
+    <%= f.file_field :image_url %>
   </div>
   <i>^ to be replaced with upload button!</i><br><br>
   

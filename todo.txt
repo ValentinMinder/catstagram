@@ -22,4 +22,29 @@ Iteration #1
 
 Iteration #2
 ------------
-TBA
+- account creation
+- account authentication
+- account permissions:
+  - cat
+  - user
+  - photo
+  - hashtag
+- photo upload form, including:
+  - actual upload (DONE)
+  - cat tagging
+  - hashtags
+  
+Iteration #3
+------------
+- hashtag autocompletion (upload form)
+- asynchronous like count update (ONLY taking into account current user)
+- prettify upload form
+- clean and pretty bootstrap layout, applied to:
+  - cat
+  - user
+  - photo
+  - hashtag
+  - main landing page
+  - search page?
+- finish report
+- prepare presentation

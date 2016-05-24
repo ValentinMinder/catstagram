@@ -10,6 +10,8 @@ class HashtagsController < ApplicationController
   # GET /hashtags/1
   # GET /hashtags/1.json
   def show
+    @title = "Photos in this tag"
+    @item = @hashtag
   end
 
   # GET /hashtags/new

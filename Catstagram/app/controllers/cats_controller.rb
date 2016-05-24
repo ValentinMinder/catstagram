@@ -10,6 +10,8 @@ class CatsController < ApplicationController
   # GET /cats/1
   # GET /cats/1.json
   def show
+    @title = "Photos of this cat"
+    @item = @cat
   end
 
   # GET /cats/new

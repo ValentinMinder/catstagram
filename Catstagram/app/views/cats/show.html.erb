@@ -17,17 +17,7 @@
   <%= @cat.birth_time %>
 </p>
 
-<p>
-  <strong>Featured in:</strong>
-  <ul>
-    <% unless @cat.photos.any? %>
-      No photos yet!
-    <% end %>
-    <% @cat.photos.each do |photo| %>
-      <li><%= link_to(image_tag(photo.image_url.thumb.url), photo) %>
-    <% end %>
-  <ul>
-</p>
+<%= render 'photos/grid' %>
 
 <p>
 <%= link_to 'Edit', edit_cat_path(@cat) %> |

@@ -5,17 +5,7 @@
   <%= @hashtag.tag %>
 </p>
 
-<p>
-  <strong>Photos in this tag:</strong>
-  <ul>
-    <% unless @hashtag.photos.any? %>
-      No photos yet!
-    <% end %>
-    <% @hashtag.photos.each do |photo| %>
-      <li><%= link_to(image_tag(photo.image_url.thumb.url), photo) %>
-    <% end %>
-  <ul>
-</p>
+<%= render 'photos/grid' %>
 
 <%= link_to 'Edit', edit_hashtag_path(@hashtag) %> |
 <%= link_to 'Back', hashtags_path %>

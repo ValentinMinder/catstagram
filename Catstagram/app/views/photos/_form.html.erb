@@ -20,22 +20,30 @@
     <%= f.file_field :image_url %>
   </div>
   <i>^ to be replaced with upload button!</i><br><br>
-  
+
   <div class="field">
     <%= f.label 'Cats on photo' %><br>
     <%= f.collection_select :cat_ids, Cat.all, :id, :catname, {}, {:multiple => true} %>
   </div>
-  
-  <div class="field">
-    <%= f.label 'Tags' %><br>
-    <%= f.collection_select :hashtag_ids, Hashtag.all, :id, :tag, {}, {:multiple => true} %>
-  </div>
-  
+
   <div class="field">
     <%= f.label :caption %><br>
     <%= f.text_area :caption %>
   </div>
+
+  <div class="field">
+    <%= f.label 'Tags' %><br>
+    <div id="tags">
+      <%= render 'tag_input' %>
+    </div>
+    <a href="javascript:;" id="addTag">Add Tag</a>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+<div style="display: none;" id="new_tag_form">
+  <%= render 'tag_input', locals: {hashtag: false} %>
+</div>

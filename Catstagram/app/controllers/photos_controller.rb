@@ -27,6 +27,8 @@ class PhotosController < ApplicationController
   def create
     @photo = Photo.new(photo_params)
 
+    set_tags
+
     respond_to do |format|
       if @photo.save
         format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
@@ -41,6 +43,8 @@ class PhotosController < ApplicationController
   # PATCH/PUT /photos/1
   # PATCH/PUT /photos/1.json
   def update
+    set_tags
+
     respond_to do |format|
       if @photo.update(photo_params)
         format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
@@ -63,6 +67,26 @@ class PhotosController < ApplicationController
   end
 
   private
+    def set_tags
+      tags_param = params[:hashtags]
+
+      @hashtags = []
+      tags_param.each do |t|
+        tag = t.downcase
+        current = Hashtag.find_by(tag: tag)
+        if current
+          p "loading existing: " + tag
+          @hashtags.push(current)
+        else
+          p "creating new: " + tag
+          tag = Hashtag.create(:tag => tag)
+          @hashtags.push(tag)
+        end
+      end
+
+      @photo.hashtags = @hashtags
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_photo
       @photo = Photo.find(params[:id])
@@ -74,6 +98,6 @@ class PhotosController < ApplicationController
                                     :view_count, :like_count, :report_count,
                                     :remove_image_url,
                                     :cat_ids => [],
-                                    :hashtag_ids => [])
+                                    :hashtags => [])
     end
 end

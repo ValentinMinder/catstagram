@@ -15,7 +15,7 @@ Iteration #1 - Due 03.05.2016
   - user
   - photo (DONE)
   - hashtag
-- automatic hashtag creation (from specific text box)
+- automatic hashtag creation (from specific text box) (DONE)
 - catnonymous
 - implement like/report count
 - implement view count (DONE)
@@ -32,8 +32,8 @@ Iteration #2 - Due 17.05.2016
 - photo upload form, including:
   - actual upload (DONE)
   - cat tagging (DONE in basic way)
-  - hashtags
-  
+  - hashtags (DONE)
+
 Iteration #3 - Due 07.06.2016
 -----------------------------
 - hashtag autocompletion (upload form)

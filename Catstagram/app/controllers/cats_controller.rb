@@ -67,6 +67,10 @@ class CatsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_cat
       @cat = Cat.find(params[:id])
+      # cat as a profile photo defined by the last uploaded photo
+      if @cat.photos.any? 
+        @profile_photo = @cat.photos.last
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

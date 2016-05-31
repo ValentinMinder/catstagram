@@ -29,6 +29,9 @@
     <!-- shows the list of cats: TODO render cats/grid -->
     <% @user.cats.each do |cat| %>
       <li>
+        <% if cat.photos.any? %>
+            <%= link_to(image_tag(cat.photos.last.image_url.thumb.url), cat) %>
+        <% end %>
         <%= link_to(cat.catname, cat) %>
     <% end %>
   </ul>

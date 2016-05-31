@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @title = "Photos uploaded by " + @user.username
+    @item = @user
   end
 
   # GET /users/new

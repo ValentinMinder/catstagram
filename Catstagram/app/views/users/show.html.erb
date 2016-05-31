@@ -30,6 +30,8 @@
   <%= @user.cats.count %>
 </p>
 
+<%= render 'photos/grid' %>
+
 <p>
   Admin panel: 
   <%= link_to 'Edit', edit_user_path(@user) %> |

@@ -21,13 +21,17 @@
 </p>
 
 <p>
-  <strong>Photo count :</strong>
-  <%= @user.photos.count %>
-</p>
-
-<p>
-  <strong>Cats count : </strong>
-  <%= @user.cats.count %>
+  <h3 id="cats">Cats of <%= @user.username + " (" + @user.cats.count.to_s + ")" %>:</h3>
+  <ul>
+    <% unless @item.cats.any? %>
+      Doesn't own any cat!
+    <% end %>
+    <!-- shows the list of cats: TODO render cats/grid -->
+    <% @user.cats.each do |cat| %>
+      <li>
+        <%= link_to(cat.catname, cat) %>
+    <% end %>
+  </ul>
 </p>
 
 <%= render 'photos/grid' %>

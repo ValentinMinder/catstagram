@@ -21,8 +21,10 @@
           <% end %>
         </td>
         <td><%= link_to user.username, user %></td>
-        <td><%= link_to user.cats.count, cats_path %></td> <!-- TODO: cats/photos of users only -->
-        <td><%= link_to user.photos.count, photos_path %></td>
+        <!-- Would be better, but doesn't work coz of # char transformed to '%25' -->
+        <!-- <%= link_to user.cats.count, user_show_section_path(user.id, "cats") %> -->
+        <td> <a href=<%=user_path(user.id)%>#cats>   <%= user.cats.count %>   </a> </td>
+        <td> <a href=<%=user_path(user.id)%>#photos> <%= user.photos.count %> </a> </td>
       </tr>
     <% end %>
   </tbody>

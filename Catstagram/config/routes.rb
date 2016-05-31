@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   patch 'users/:id/ban' => 'users#ban_update'
   post 'users/:id/ban' => 'users#ban_update'
 
+  # used to show specific section of a user (cats ot photos)
+  # doesn't work properly as '#' is replaced by '%25' and doesn't work anymore
+  get 'users/:id#:sect', to: 'users#show', as: 'user_show_section'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

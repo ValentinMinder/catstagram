@@ -71,20 +71,22 @@ class PhotosController < ApplicationController
       tags_param = params[:hashtags]
 
       @hashtags = []
-      tags_param.each do |t|
-        tag = t.downcase
-        current = Hashtag.find_by(tag: tag)
-        if current
-          p "loading existing: " + tag
-          @hashtags.push(current)
-        else
-          p "creating new: " + tag
-          tag = Hashtag.create(:tag => tag)
-          @hashtags.push(tag)
+      if tags_param
+        tags_param.each do |t|
+          tag = t.downcase
+          current = Hashtag.find_by(tag: tag)
+          if current
+            p "loading existing: " + tag
+            @hashtags.push(current)
+          else
+            p "creating new: " + tag
+            tag = Hashtag.create(:tag => tag)
+            @hashtags.push(tag)
+          end
         end
       end
 
-      @photo.hashtags = @hashtags
+      @photo.hashtags = @hashtags.uniq
     end
 
     # Use callbacks to share common setup or constraints between actions.

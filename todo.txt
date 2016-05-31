@@ -41,9 +41,22 @@ Iteration #3 - Due 07.06.2016
 - prettify upload form
 - clean and pretty bootstrap layout, applied to:
   - cat
+    - index (mostly DONE)
+    - show
+    - form (new/edit)
   - user
+    - index
+    - show
+    - form (new/edit)
   - photo
+    - index
+    - show
+    - form (new/edit)
   - hashtag
+  - index
+  - show
+  - form (new/edit)
+
   - main landing page
   - search page?
 - finish report

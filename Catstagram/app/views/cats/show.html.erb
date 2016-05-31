@@ -1,38 +1,56 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @cat.catname %></h1>
+<div class="container">
 
-<!-- shows profile photo of cat, if any -->
-<p>
-  <% if (@profile_photo) %>
-    <%= link_to(image_tag(@profile_photo.image_url.thumb.url), @profile_photo) %>
-  <% end %>
-</p>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h1><%= @cat.catname %></h1>
+    </div>
+    <div class="panel-body">
+        <% unless @cat.city.blank? %>
+          <strong>From</strong> <%= @cat.city %><br>
+        <% end %>
+        <% if @cat.user %>
+          <strong>Belongs to</strong> <%= link_to @cat.user.username, @cat.user %><br>
+        <% end %>
+        <strong>Birth date </strong> <%= @cat.birth_time %>
+    </div>
+  </div>
 
-<p>
-  <strong>Owner:</strong>
-  <%= link_to @cat.user.username, @cat.user if @cat.user  %>
-  <%= "No owner." if !@cat.user  %>
-</p>
+  <h1><%= @cat.catname %></h1>
 
-<p>
-  <strong>Description:</strong>
-  <%= @cat.description %>
-</p>
+  <!-- shows profile photo of cat, if any -->
+  <p>
+    <% if (@profile_photo) %>
+      <%= link_to(image_tag(@profile_photo.image_url.thumb.url), @profile_photo) %>
+    <% end %>
+  </p>
 
-<p>
-  <strong>City:</strong>
-  <%= @cat.city %>
-</p>
+  <p>
+    <strong>Owner:</strong>
+    <%= link_to @cat.user.username, @cat.user if @cat.user  %>
+    <%= "No owner." if !@cat.user  %>
+  </p>
 
-<p>
-  <strong>Birth time:</strong>
-  <%= @cat.birth_time %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= @cat.description %>
+  </p>
 
-<%= render 'photos/grid' %>
+  <p>
+    <strong>City:</strong>
+    <%= @cat.city %>
+  </p>
 
-<p>
-<%= link_to 'Edit', edit_cat_path(@cat) %> |
-<%= link_to 'Back', cats_path %>
-</p>
+  <p>
+    <strong>Birth time:</strong>
+    <%= @cat.birth_time %>
+  </p>
+
+  <%= render 'photos/grid' %>
+
+  <p>
+  <%= link_to 'Edit', edit_cat_path(@cat) %> |
+  <%= link_to 'Back', cats_path %>
+  </p>
+</div>

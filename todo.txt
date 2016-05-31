@@ -2,19 +2,18 @@ Iteration #1 - Due 03.05.2016
 -----------------------------
 - creation/edition forms for (including relations):
   - cat (DONE - need to edit when user logins are implemented)
-  - user
+  - user DONE
   - photo (DONE - need to edit when user logins are implemented)
-  - hashtag
 - simple index display for:
   - cat (DONE)
-  - user
+  - user DONE
   - photo (DONE)
   - hashtag
 - simple item display for:
   - cat (DONE)
-  - user
+  - user DONE
   - photo (DONE)
-  - hashtag
+  - hashtag DONE
 - automatic hashtag creation (from specific text box) (DONE)
 - catnonymous
 - implement like/report count
@@ -61,3 +60,12 @@ Iteration #3 - Due 07.06.2016
   - search page?
 - finish report
 - prepare presentation
+
+Valentin:
+- navigation
+- header with search
+- footer
+- home page / index
+- admin view to view reported photos and take action
+Eléonore:
+- consistent listing / partial views

@@ -2,6 +2,19 @@
 
 <h1><%= @cat.catname %></h1>
 
+<!-- shows profile photo of cat, if any -->
+<p>
+  <% if (@profile_photo) %>
+    <%= link_to(image_tag(@profile_photo.image_url.thumb.url), @profile_photo) %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= link_to @cat.user.username, @cat.user if @cat.user  %>
+  <%= "No owner." if !@cat.user  %>
+</p>
+
 <p>
   <strong>Description:</strong>
   <%= @cat.description %>

@@ -21,14 +21,23 @@
 </p>
 
 <p>
-  <strong>Photo count :</strong>
-  <%= @user.photos.count %>
+  <h3 id="cats">Cats of <%= @user.username + " (" + @user.cats.count.to_s + ")" %>:</h3>
+  <ul>
+    <% unless @item.cats.any? %>
+      Doesn't own any cat!
+    <% end %>
+    <!-- shows the list of cats: TODO render cats/grid -->
+    <% @user.cats.each do |cat| %>
+      <li>
+        <% if cat.photos.any? %>
+            <%= link_to(image_tag(cat.photos.last.image_url.thumb.url), cat) %>
+        <% end %>
+        <%= link_to(cat.catname, cat) %>
+    <% end %>
+  </ul>
 </p>
 
-<p>
-  <strong>Cats count : </strong>
-  <%= @user.cats.count %>
-</p>
+<%= render 'photos/grid' %>
 
 <p>
   Admin panel: 

@@ -1,6 +1,5 @@
-<p id="notice"><%= notice %></p>
-
 <div class="container">
+  <p id="notice"><%= notice %></p>
 
   <h1>Listing Cats</h1>
 
@@ -26,7 +25,7 @@
               <div class="panel-body">
                 <center>
                   <% if cat.photos.last %>
-                    <%= image_tag(cat.photos.last.image_url.thumb.url) %>
+                    <%= image_tag cat.photos.last.image_url.thumb.url %>
                   <% end %>
                 </center>
               </div>

@@ -1,19 +1,27 @@
-<p id="notice"><%= notice %></p>
-
 <div class="container">
+  <p id="notice"><%= notice %></p>
 
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h1><%= @cat.catname %></h1>
     </div>
     <div class="panel-body">
-        <% unless @cat.city.blank? %>
-          <strong>From</strong> <%= @cat.city %><br>
-        <% end %>
-        <% if @cat.user %>
-          <strong>Belongs to</strong> <%= link_to @cat.user.username, @cat.user %><br>
-        <% end %>
-        <strong>Birth date </strong> <%= @cat.birth_time %>
+      <% unless @cat.description.blank? %>
+        <blockquote>
+          <p><%= @cat.description %></p>
+        </blockquote>
+      <% end %>
+      <% unless @cat.city.blank? %>
+        <strong>From</strong> <%= @cat.city %><br>
+      <% end %>
+      <% if @cat.user %>
+        <strong>Belongs to</strong> <%= link_to @cat.user.username, @cat.user %><br>
+      <% else %>
+        <strong>Ownerless</strong><br>
+      <% end %>
+      <strong>Birth date </strong> <%= @cat.birth_time %>
+
+      <%= render 'photos/grid' %>
     </div>
   </div>
 
@@ -47,7 +55,6 @@
     <%= @cat.birth_time %>
   </p>
 
-  <%= render 'photos/grid' %>
 
   <p>
   <%= link_to 'Edit', edit_cat_path(@cat) %> |

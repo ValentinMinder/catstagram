@@ -41,20 +41,21 @@ Iteration #3 - Due 07.06.2016
 - clean and pretty bootstrap layout, applied to:
   - cat
     - index (mostly DONE)
-    - show
-    - form (new/edit)
+    - show (mostly DONE)
+    - form (new/edit) (DONE - need to fix owner choice)
   - user
-    - index
-    - show
-    - form (new/edit)
+    - index (mostly DONE)
+    - show (mostly DONE - need to setup admin panel)
+    - form (new/edit) (mostly DONE - need to setup avatar upload)
+    - ban form?
   - photo
-    - index
-    - show
-    - form (new/edit)
+    - index (mostly DONE)
+    - show (mostly DONE - need to add like/report buttons)
+    - form (new/edit) (mostly DONE - need to fix partials with tags)
+    - grid view (DONE)
   - hashtag
-  - index
-  - show
-  - form (new/edit)
+    - index (? need to decide what to do here)
+    - show (DONE)
 
   - main landing page
   - search page?

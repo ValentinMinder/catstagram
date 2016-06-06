@@ -1,40 +1,95 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <%= image_tag @photo.image_url %>
-</p>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <center>
+        <%= image_tag @photo.image_url %>
+      </center>
+      <%= link_to "by " + @photo.user.username, @photo.user if @photo.user %>
+      <% unless @photo.caption.blank? %>
+        <blockquote>
+          <p><%= @photo.caption %></p>
+        </blockquote>
+      <% end %>
 
-<p>
-  <%= link_to "by " + @photo.user.username, @photo.user if @photo.user %>
-</p>
+      <% if @photo.cats.any? %>
+        <h3>Cats featured in this photo:</h3>
+        <% @photo.cats.each_slice(4) do |cats| %>
+          <div class="row">
+            <% cats.each do |cat| %>
+              <%= link_to cat do %>
+                <div class="col-lg-3">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <%= cat.catname %>
+                    </div>
+                    <div class="panel-body">
+                      <center>
+                        <%= image_tag cat.photos.last.image_url.thumb.url %>
+                      </center>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="panel-footer">
+      <% @photo.hashtags.each do |tag| %>
+        <%= link_to "#" + tag.tag, tag %>
+      <% end %>
+      <div class="pull-right">
+        <%= @photo.view_count %> &#664;
+        <%= @photo.like_count %> &#9829;
+      </div>
+    </div>
+  </div>
 
-<p>
-  <%= @photo.caption %>
-</p>
 
-<p>
-  <%= @photo.view_count %> <%= (@photo.view_count == 1) ? "view" : "views" %>
-</p>
 
-<p>
-  <%= @photo.like_count %> <%= (@photo.like_count == 1) ? "like" : "likes" %>
-</p>
 
-<p>
-  <strong>Cats featured in this photo:</strong>
-  <ul>
-  <% @photo.cats.each do |cat| %>
-    <li><%= link_to cat.catname, cat %>
-  <% end %>
-  </ul>
-</p>
 
-<p>
-  <strong>Tags: </strong>
-  <% @photo.hashtags.each do |tag| %>
-    <%= link_to tag.tag, tag %>; 
-  <% end %>
-</p>
 
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', photos_path %>
+
+  <p>
+    <%= image_tag @photo.image_url %>
+  </p>
+
+  <p>
+    <%= link_to "by " + @photo.user.username, @photo.user if @photo.user %>
+  </p>
+
+  <p>
+    <%= @photo.caption %>
+  </p>
+
+  <p>
+    <%= @photo.view_count %> <%= (@photo.view_count == 1) ? "view" : "views" %>
+  </p>
+
+  <p>
+    <%= @photo.like_count %> <%= (@photo.like_count == 1) ? "like" : "likes" %>
+  </p>
+
+  <p>
+    <strong>Cats featured in this photo:</strong>
+    <ul>
+    <% @photo.cats.each do |cat| %>
+      <li><%= link_to cat.catname, cat %>
+    <% end %>
+    </ul>
+  </p>
+
+  <p>
+    <strong>Tags: </strong>
+    <% @photo.hashtags.each do |tag| %>
+      <%= link_to tag.tag, tag %>;
+    <% end %>
+  </p>
+
+  <%= link_to 'Edit', edit_photo_path(@photo) %> |
+  <%= link_to 'Back', photos_path %>
+</div>

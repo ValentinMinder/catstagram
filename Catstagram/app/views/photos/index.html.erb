@@ -3,6 +3,27 @@
 
   <h1>Listing Photos</h1>
 
+  <table class="table table-striped table-hover">
+    <tbody>
+      <% @photos.each_slice(8) do |photos| %>
+        <tr>
+          <% photos.each do |photo| %>
+            <td><center>
+              <%= link_to photo do %>
+                <%= image_tag photo.image_url.thumb.url %><br>
+                <%= photo.view_count %> &#664;
+                <%= photo.like_count %> &#9829;
+              <% end %>
+            </center></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+
+
+
   <table>
     <thead>
       <tr>

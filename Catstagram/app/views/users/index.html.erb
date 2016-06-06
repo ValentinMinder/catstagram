@@ -1,35 +1,65 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<h1>Listing Users</h1>
+  <h1>Listing Users</h1>
 
-<table>
-  <thead>
-    <tr >
-      <th></th>
-      <th>Username</th>
-      <th>Cats</th>
-      <th>Photos</th>
-    </tr>
-  </thead>
+  <% @users.each_slice(4) do |users| %>
+    <div class="row">
+      <% users.each do |user| %>
+        <%= link_to user do %>
+          <div class="col-lg-3">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <%= user.username %>
+              </div>
+              <div class="panel-body">
+                <center>
+                  <% unless user.avatar_url.blank? %>
+                    <%= image_tag user.avatar_url, :style => "height:20px;" %><br>
+                  <% end %>
+                  <strong><%= user.cats.count %></strong> cats,
+                  <strong><%= user.photos.count %></strong> photos
+                </center>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td>
-          <% if (user.avatar_url != "") %>
-            <img src="<%=user.avatar_url%>" alt="Av." style="height:20px;">
-          <% end %>
-        </td>
-        <td><%= link_to user.username, user %></td>
-        <!-- Would be better, but doesn't work coz of # char transformed to '%25' -->
-        <!-- <%= link_to user.cats.count, user_show_section_path(user.id, "cats") %> -->
-        <td> <a href=<%=user_path(user.id)%>#cats>   <%= user.cats.count %>   </a> </td>
-        <td> <a href=<%=user_path(user.id)%>#photos> <%= user.photos.count %> </a> </td>
+
+
+
+  <table>
+    <thead>
+      <tr >
+        <th></th>
+        <th>Username</th>
+        <th>Cats</th>
+        <th>Photos</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td>
+            <% if (user.avatar_url != "") %>
+              <img src="<%=user.avatar_url%>" alt="Av." style="height:20px;">
+            <% end %>
+          </td>
+          <td><%= link_to user.username, user %></td>
+          <!-- Would be better, but doesn't work coz of # char transformed to '%25' -->
+          <!-- <%= link_to user.cats.count, user_show_section_path(user.id, "cats") %> -->
+          <td> <a href=<%=user_path(user.id)%>#cats>   <%= user.cats.count %>   </a> </td>
+          <td> <a href=<%=user_path(user.id)%>#photos> <%= user.photos.count %> </a> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New User', new_user_path %>
+  <br>
+
+  <%= link_to 'New User', new_user_path %>
+</div>

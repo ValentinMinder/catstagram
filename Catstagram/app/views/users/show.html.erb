@@ -1,59 +1,109 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
 
-<h1> <%= @user.username %> </h1>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h1> <%= @user.username %> </h1>
+    </div>
+    <div class="panel-body">
+      <% unless @user.avatar_url.blank? %>
+        <%= image_tag @user.avatar_url, :style => "height:100px;" %>
+      <% end %>
+      <% unless @user.biography.blank? %>
+        <blockquote>
+          <%= @user.biography %>
+        </blockquote>
+      <% end %>
+      <strong>Joined at:</strong> <%= @user.created_at %>
 
-<p>
-  <% if (@user.avatar_url != "") %>
-  	<img src="<%=@user.avatar_url%>" alt="broken avatar link" style="height:100px;">
-  <% end %>
-</p>
-
-<p>
-  <strong>Biography:</strong>
-  <p>
-  	<%= @user.biography %>
-  <p>
-</p>
-
-<p>
-  <strong>Joined at: </strong>
-  <%= @user.created_at %>
-</p>
-
-<p>
-  <h3 id="cats">Cats of <%= @user.username + " (" + @user.cats.count.to_s + ")" %>:</h3>
-  <ul>
-    <% unless @item.cats.any? %>
-      Doesn't own any cat!
-    <% end %>
-    <!-- shows the list of cats: TODO render cats/grid -->
-    <% @user.cats.each do |cat| %>
-      <li>
-        <% if cat.photos.any? %>
-            <%= link_to(image_tag(cat.photos.last.image_url.thumb.url), cat) %>
+      <% if @user.cats.any? %>
+        <h3 id="cats">My cats <%= "(" + @user.cats.count.to_s + ")" %>:</h3>
+        <% @user.cats.each_slice(4) do |cats| %>
+          <div class="row">
+            <% cats.each do |cat| %>
+              <%= link_to cat do %>
+                <div class="col-lg-3">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <%= cat.catname %>
+                    </div>
+                    <div class="panel-body">
+                      <center>
+                        <%= image_tag cat.photos.last.image_url.thumb.url %>
+                      </center>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
         <% end %>
-        <%= link_to(cat.catname, cat) %>
+      <% end %>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+  <h1> <%= @user.username %> </h1>
+
+  <p>
+    <% if (@user.avatar_url != "") %>
+    	<img src="<%=@user.avatar_url%>" alt="broken avatar link" style="height:100px;">
     <% end %>
-  </ul>
-</p>
+  </p>
 
-<%= render 'photos/grid' %>
+  <p>
+    <strong>Biography:</strong>
+    <p>
+    	<%= @user.biography %>
+    <p>
+  </p>
 
-<p>
-  Admin panel: 
+  <p>
+    <strong>Joined at: </strong>
+    <%= @user.created_at %>
+  </p>
+
+  <p>
+    <h3 id="cats">Cats of <%= @user.username + " (" + @user.cats.count.to_s + ")" %>:</h3>
+    <ul>
+      <% unless @item.cats.any? %>
+        Doesn't own any cat!
+      <% end %>
+      <!-- shows the list of cats: TODO render cats/grid -->
+      <% @user.cats.each do |cat| %>
+        <li>
+          <% if cat.photos.any? %>
+              <%= link_to(image_tag(cat.photos.last.image_url.thumb.url), cat) %>
+          <% end %>
+          <%= link_to(cat.catname, cat) %>
+      <% end %>
+    </ul>
+  </p>
+
+  <%= render 'photos/grid' %>
+
+  <p>
+    Admin panel:
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+    <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </p>
+
+  <p>
+    Ban interface:
+    <% if (@user.is_banned) %>
+      User is BANNED until <%= @user.banned_until %>.
+    <% else %>
+      User is not banned.
+    <% end %>
+    <%= link_to 'Ban user menu', ban_user_path(@user) %>
+  </p>
+
   <%= link_to 'Edit', edit_user_path(@user) %> |
-  <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
-</p>
-
-<p>
-  Ban interface:
-  <% if (@user.is_banned) %>
-    User is BANNED until <%= @user.banned_until %>.
-  <% else %>
-    User is not banned.
-  <% end %>
-  <%= link_to 'Ban user menu', ban_user_path(@user) %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <%= link_to 'Back', users_path %>
+</div>

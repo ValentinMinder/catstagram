@@ -54,12 +54,11 @@
           <!-- <%= link_to user.cats.count, user_show_section_path(user.id, "cats") %> -->
           <td> <a href=<%=user_path(user.id)%>#cats>   <%= user.cats.count %>   </a> </td>
           <td> <a href=<%=user_path(user.id)%>#photos> <%= user.photos.count %> </a> </td>
+          <td> <%= link_to 'Edit Roles', edit_roles_user_path(user) %> </a> </td>
         </tr>
       <% end %>
     </tbody>
   </table>
 
   <br>
-
-  <%= link_to 'New User', new_user_path %>
 </div>

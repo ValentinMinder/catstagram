@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :ban, :ban_update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :ban, :ban_update, :edit_roles, :save_roles]
 
   # GET /users
   # GET /users.json
@@ -85,6 +85,25 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def edit_roles
+
+  end
+
+  def save_roles
+    @user.roles.each do |role|
+      @user.roles.delete(role)
+    end
+
+    if params[:user]
+      for id_role in params[:user][:role_ids]
+        role = Role.find(id_role)
+        @user.roles << role
+      end
+    end
+
+    redirect_to users_path
   end
 
   private

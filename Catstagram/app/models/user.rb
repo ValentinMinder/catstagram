@@ -5,6 +5,26 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :photos, {:dependent => :destroy}
   has_many :cats
+
+  has_and_belongs_to_many :roles
+
+  # check role
+  def has_role?(role)
+    return self.roles.find_by(:name => role.to_s.camelize)
+  end
+
+  # check admin role
+  def is_admin? 
+    return has_role('admin')
+  end
+
+  def roles_as_text
+    text = ''
+    self.roles.each do |role|
+      text += role.name + " "
+    end
+    return text
+  end
   
   ## Checks if a user is banned given its banned_until value
   def is_banned

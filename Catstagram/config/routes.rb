@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  resources :roles
   devise_for :users
   resources :hashtags
   resources :photos
   resources :cats
-  resources :users
+  resources :users do 
+    member do 
+      put :save_roles
+      get :edit_roles
+    end
+  end
 
   # get the ban form / update the ban status of a user
   get 'users/:id/ban', to: 'users#ban', as:'ban_user'

@@ -18,3 +18,7 @@ rails generate devise:install
 rails g devise:views
 # to add devise fields to existing model User
 rails generate devise User
+
+# roles
+rails generate scaffold Role name:string
+rails generate migration RolesUsers

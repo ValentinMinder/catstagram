@@ -89,9 +89,14 @@
   <%= render 'photos/grid' %>
 
   <p>
+    Roles: <%= @user.roles_as_text %>
+  </p>
+  
+  <p>
     Admin panel:
     <%= link_to 'Edit', edit_user_path(@user) %> |
-    <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %> 
+    | <%= link_to 'Edit Roles', edit_roles_user_path(@user) %>
   </p>
 
   <p>

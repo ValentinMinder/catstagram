@@ -64,9 +64,9 @@ Iteration #3 - Due 07.06.2016
 
 Valentin:
 - navigation
-- header with search
-- footer
-- home page / index
+- header with search (DONE, TBD search form)
+- footer (DONE)
+- home page / index (FOR NOW: photos index)
 - admin view to view reported photos and take action
 Eléonore:
 - consistent listing / partial views

@@ -12,3 +12,9 @@ rails g migration AddUserToPhotos user:references
 rails g migration AddUserToCats user:references
 
 rails g uploader Image
+
+rails generate devise:install
+# to copy devise views to be customisable
+rails g devise:views
+# to add devise fields to existing model User
+rails generate devise User

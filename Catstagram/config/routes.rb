@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :hashtags
   resources :photos
   resources :cats
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   # destination of / and index_path
-  root 'photos#index', as: 'index'
+  root to: 'photos#index', as: 'index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

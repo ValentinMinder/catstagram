@@ -1,4 +1,4 @@
-<h2>Specification des roles joues par <%= @user.username %> </h2> 
+<h1>Roles attributed to <%= @user.username %> </h1> 
 
 <%= form_for(@user, :url => save_roles_user_path(@user), method: :put) do |f| %>
   <% for role in Role.all %>

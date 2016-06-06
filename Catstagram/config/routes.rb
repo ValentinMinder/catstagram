@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   # doesn't work properly as '#' is replaced by '%25' and doesn't work anymore
   get 'users/:id#:sect', to: 'users#show', as: 'user_show_section'
 
+  #unauthorized page (when rights are not met)
+  get '403', to: 'users#access_denied', as: 'access_denied'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   # check admin role
   def is_admin? 
-    return has_role('admin')
+    return self.has_role?(:admin)
   end
 
   def roles_as_text

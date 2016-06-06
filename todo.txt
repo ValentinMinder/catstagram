@@ -25,10 +25,10 @@ Iteration #2 - Due 17.05.2016
 - account authentication: DONE
 - Problem: account creation & profile edition is different
 - account permissions:
-  - cat
-  - user
-  - photo
-  - hashtag
+  - cat DONE
+  - user DONE
+  - photo DONE
+  - hashtag DONE
 - photo upload form, including:
   - actual upload (DONE)
   - cat tagging (DONE in basic way)
@@ -64,10 +64,10 @@ Iteration #3 - Due 07.06.2016
 - prepare presentation
 
 Valentin:
-- navigation
+- navigation 
 - header with search (DONE, TBD search form)
 - footer (DONE)
 - home page / index (FOR NOW: photos index)
-- admin view to view reported photos and take action
+- admin view (DONE) to view reported photos and take action (TBD)
 Eléonore:
 - consistent listing / partial views

@@ -22,3 +22,6 @@ rails generate devise User
 # roles
 rails generate scaffold Role name:string
 rails generate migration RolesUsers
+
+# cancan
+rails g cancan:ability

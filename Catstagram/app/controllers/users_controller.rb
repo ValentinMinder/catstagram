@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :ban, :ban_update, :edit_roles, :save_roles]
 
+  #before_filter :authenticate_user!, only: [:edit, :update, :destroy, :ban, :ban_update, :edit_roles, :save_roles]
+  load_and_authorize_resource :except => [:index]
+  skip_authorize_resource :only => [:access_denied]
+
+
   # GET /users
   # GET /users.json
   def index
@@ -104,6 +109,9 @@ class UsersController < ApplicationController
     end
 
     redirect_to users_path
+  end
+
+  def access_denied
   end
 
   private

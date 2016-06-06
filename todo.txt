@@ -21,8 +21,9 @@ Iteration #1 - Due 03.05.2016
 
 Iteration #2 - Due 17.05.2016
 -----------------------------
-- account creation
-- account authentication
+- account creation : DONE
+- account authentication: DONE
+- Problem: account creation & profile edition is different
 - account permissions:
   - cat
   - user

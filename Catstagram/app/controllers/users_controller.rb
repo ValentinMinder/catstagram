@@ -118,6 +118,11 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
+      # automatically add user right when we see the user
+      # /!\ it add to every and single user visited!
+      if !@user.is_user?
+        @user.roles << Role.where(name: 'user').first_or_create
+      end
     end
 
     # Ban may only edit banned_until param

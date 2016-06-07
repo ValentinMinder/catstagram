@@ -18,6 +18,11 @@ class User < ActiveRecord::Base
     return self.has_role?(:admin)
   end
 
+  # check user role
+  def is_user? 
+    return self.has_role?(:user)
+  end
+
   def roles_as_text
     text = ''
     self.roles.each do |role|

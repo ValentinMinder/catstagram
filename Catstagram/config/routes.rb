@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :roles
-  devise_for :users
+  
+  # custom overriden controller allows to insert custum field at registration
+  # source: http://jacopretorius.net/2014/03/adding-custom-fields-to-your-devise-user-model-in-rails-4.html
+  # todo: modify devise views
+  devise_for :users, :controllers => { registrations: 'registrations' }
   resources :hashtags
   resources :photos
   resources :cats

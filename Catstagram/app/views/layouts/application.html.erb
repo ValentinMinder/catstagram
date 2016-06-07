@@ -45,6 +45,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
+          <!-- Admin NavBar -->
           <% if current_user.is_admin? %>
             <li class="active"><a href="/"> LOGGED AS ADMIN <span class="sr-only">(current)</span></a></li>
             <li class="dropdown">
@@ -66,6 +67,7 @@
               </ul>
             </li>
           <% end %>
+          <!-- User NavBar -->
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> <%= current_user.username %> <span class="caret"></span></a>
             <ul class="dropdown-menu" role="menu">
@@ -92,6 +94,7 @@
             </ul>
           </li>
         <% else %>
+          <!-- Guest Buttons -->
           <li>
             <%= link_to 'Sign up', new_user_registration_path %>
           </li>
@@ -105,6 +108,7 @@
 </nav>
 
 <!-- for flash message, eg from devise -->
+<!-- TODO check if really necessary or doubled -->
 <p class="notice">
   <%= notice %>
 </p>
@@ -113,27 +117,33 @@
   <%= alert %>
 </p>
 
+<!-- change to true to make ALL disabled links appear as a guest, to test permissions. Alternatively, users with tester rights will also see these links. -->
+<% tester = false %>
+<% if tester || (user_signed_in? && current_user.is_tester?) %>
+  <%= render "devise/shared/routes" %>
+<% end %>    
+
 <%= yield %>
 
 <footer>
   <div class="col-lg-12" >
     <ul class="list-unstyled">
-      <li class="pull-right"><a href="#top">Back to top</a></li>
-      <li>
-        <%= link_to 'Home', index_path %>
+      <li class="pull-right">
+        (c) 2016 
+        <%= link_to 'Catstagram', index_path %>
+        - 
+        <a href="http://heig-vd.ch/">HEIG-VD</a>
+        -
+        Made by 
+        <a href="https://github.com/paranoodle/">Eléonore d'Agostino</a>
+        & 
+        <a href="https://github.com/ValentinMinder/">Valentin Minder</a>.
       </li>
+      <li>
+        <a href="#top">Back to top</a>
+      </li>
+      
     </ul>
-    <p> 
-      Made by 
-      <a href="https://github.com/paranoodle/">Eléonore d'Agostino</a>
-      & 
-      <a href="https://github.com/ValentinMinder/">Valentin Minder</a>
-      .
-    </p>
-    <p> 
-      (c) <%= link_to 'Catstagram', index_path %>
-      2016 - <a href="http://heig-vd.ch/">HEIG-VD</a>
-    </p>
   </div>
 </footer>
 

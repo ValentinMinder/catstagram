@@ -1,3 +1,36 @@
-<div class="container">
-  <h1>ACCESS DENIED</h1>
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title">Error 403 : Forbidden/Unauthorized. ACCESS IS DENIED.</h3>
+  </div>
+  <div class="panel-body">
+    You're not authorized to see or access this resource, and it caused
+    an
+    <%= link_to 'HTTP 403 FORBIDDEN' ,'https://en.wikipedia.org/wiki/HTTP_403' %>
+    error.
+
+    <p>
+    <!-- display different message for logged user and guest. -->
+    <% if user_signed_in? %>
+      <strong>
+        You're connected as 
+        <%= current_user.username %>
+        (<%= current_user.email %>). 
+      </strong><br>
+
+      You probably don't have sufficient access rights. Ask an admin for more information. <br>
+
+      If you have another account with different rights, you might want to 
+      <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+      and log in again with the other account.
+    <% else %>
+      Some features are reserved for registered users. <br>
+
+      Try to connect with
+      <%= link_to 'Log in', new_user_session_path %> 
+      or to create an account with
+      <%= link_to 'Sign up', new_user_registration_path %>.
+    <% end %>
+    </p>
+  </div>
 </div>
+

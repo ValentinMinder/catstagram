@@ -1,0 +1,168 @@
+<!-- ALL THE ROUTES TO TEST AUTH RIGHTS -->
+
+<h3> MODEL TEST LINKS </h3>
+
+<br>
+Photos
+<% val = 1 %>
+<%= link_to "INDEX GET", photos_path %> |
+<%= link_to "POST", photos_path, :method => :post %> |
+<%= link_to "NEW GET", new_photo_path %> |
+<%= link_to "EDIT GET", edit_photo_path(val) %> |
+<%= link_to "GET", photo_path(val) %> |
+<%= link_to "PUT", photo_path(val), :method => :put %> |
+<%= link_to "PATCH", photo_path(val), :method => :patch %> |
+<%= link_to "DELETE", photo_path(val), method: :delete %>.
+
+<br>
+Cats
+<% val = 1 %>
+<%= link_to "INDEX GET", cats_path %> |
+<%= link_to "POST", cats_path, :method => :post %> |
+<%= link_to "NEW GET", new_cat_path %> |
+<%= link_to "EDIT GET", edit_cat_path(val) %> |
+<%= link_to "GET", cat_path(val) %> |
+<%= link_to "PUT", cat_path(val), :method => :put %> |
+<%= link_to "PATCH", cat_path(val), :method => :patch %> |
+<%= link_to "DELETE", cat_path(val), method: :delete %>.
+
+<br>
+Users (basic)
+<% val = 1 %>
+<%= link_to "INDEX GET", users_path %> |
+<%= link_to "POST", users_path, :method => :post %> |
+<%= link_to "NEW GET", new_user_path %> |
+<%= link_to "EDIT GET", edit_user_path(val) %> |
+<%= link_to "GET", user_path(val) %> |
+<%= link_to "PUT", user_path(val), :method => :put %> |
+<%= link_to "PATCH", user_path(val), :method => :patch %> |
+<%= link_to "DELETE", user_path(val), method: :delete %>.
+
+<br>
+Hashtags
+<% val = 1 %>
+<%= link_to "INDEX GET", hashtags_path %> |
+<%= link_to "POST", hashtags_path, :method => :post %> |
+<%= link_to "NEW GET", new_hashtag_path %> |
+<%= link_to "EDIT GET", edit_hashtag_path(val) %> |
+<%= link_to "GET", hashtag_path(val) %> |
+<%= link_to "PUT", hashtag_path(val), :method => :put %> |
+<%= link_to "PATCH", hashtag_path(val), :method => :patch %> |
+<%= link_to "DELETE", hashtag_path(val), method: :delete %>.
+
+<br>
+Roles
+<% val = 1 %>
+<%= link_to "INDEX GET", roles_path %> |
+<%= link_to "POST", roles_path, :method => :post %> |
+<%= link_to "NEW GET", new_role_path %> |
+<%= link_to "EDIT GET", edit_role_path(val) %> |
+<%= link_to "GET", role_path(val) %> |
+<%= link_to "PUT", role_path(val), :method => :put %> |
+<%= link_to "PATCH", role_path(val), :method => :patch %> |
+<%= link_to "DELETE", role_path(val), method: :delete %>.
+
+<h3> USER TEST LINKS </h3>
+<% if user_signed_in? %>
+  <!-- Admin NavBar -->
+  <% if current_user.is_user? %>
+
+    Should be blocked: 
+    <%= link_to "NEW GET", new_user_path %> |
+    <%= link_to "POST", users_path, :method => :post %> |
+    <%= link_to "DELETE", user_path(current_user), method: :delete %>.
+    <br>
+    Should work:
+    <%= link_to "EDIT GET", edit_user_path(current_user) %> |
+    <%= link_to "PUT", user_path(current_user), :method => :put %> |
+    <%= link_to "PATCH", user_path(current_user), :method => :patch %>.
+
+    <br>
+    <% val = val #Photo.where(caption: 'test', image_url: '/test').first_or_create %>
+    Photos:
+    <%= link_to "POST", photos_path, :method => :post %> |
+    <%= link_to "NEW GET", new_photo_path %> |
+    <%= link_to "EDIT GET", edit_photo_path(val) %> |
+    <%= link_to "PUT", photo_path(val), :method => :put %> |
+    <%= link_to "PATCH", photo_path(val), :method => :patch %> |
+    <%= link_to "DELETE", photo_path(val), method: :delete %>.
+
+    <br>
+    <% val = val #Cat.where(owner: current_user, name: 'cat_test').first_or_create %>
+    Cats:
+    <%= link_to "POST", cats_path, :method => :post %> |
+    <%= link_to "NEW GET", new_cat_path %> |
+    <%= link_to "EDIT GET", edit_cat_path(val) %> |
+    <%= link_to "PUT", cat_path(val), :method => :put %> |
+    <%= link_to "PATCH", cat_path(val), :method => :patch %> |
+    <%= link_to "DELETE", cat_path(val), method: :delete %>.
+
+    <br>
+    <% val = val #Hashtag.where(name: 'tag').first_or_create %>
+    Hashtags:
+    <%= link_to "POST", hashtags_path, :method => :post %> |
+    <%= link_to "NEW GET", new_hashtag_path %> |
+    <%= link_to "EDIT GET", edit_hashtag_path(val) %> |
+    <%= link_to "PUT", hashtag_path(val), :method => :put %> |
+    <%= link_to "PATCH", hashtag_path(val), :method => :patch %> |
+    <%= link_to "DELETE", hashtag_path(val), method: :delete %>.
+
+  <% end %>
+<% end %>
+
+
+<h3> AUTH TEST LINKS </h3>
+
+<br>
+Devise:
+
+<%= link_to "Log in", new_session_path(User) %> |
+<%= link_to "Sign up", new_registration_path(User) %> | 
+<%= link_to "Forgot your password?", new_password_path(User) %> |
+<%= link_to "Log out", destroy_user_session_path, :method => :delete %> |
+<%= link_to "Edit profile", edit_user_registration_path %> |
+<%= link_to "Cancel my account", registration_path(User), method: :delete %>.
+
+<br>
+Session:
+<%= link_to "Log in", new_user_session_path %> |
+<%= link_to "Log in POST", user_session_path, :method => :post %> | 
+<%= link_to "Log out", destroy_user_session_path, :method => :delete %> |
+
+<br>
+Passwords:
+<%= link_to "POST reset", user_password_path, :method => :post %> |
+<%= link_to "Reset password", new_user_password_path %> |
+<%= link_to "Retrieve link", edit_user_password_path %> |
+<%= link_to "PUT reset", user_password_path, :method => :put %> |
+<%= link_to "PATCH reset", user_password_path, :method => :patch %> |
+
+<br>
+Registrations
+<%= link_to "Cancel reg", cancel_user_registration_path %> |
+<%= link_to "POST reg", user_registration_path, :method => :post %> |
+<%= link_to "Sign up", new_user_registration_path %> |
+<%= link_to "Edit credentials", edit_user_registration_path %> |
+<%= link_to "PUT reg", user_registration_path, :method => :put %> |
+<%= link_to "PATCH reg", user_registration_path, :method => :patch %> |
+<%= link_to "DELETE reg", user_registration_path, method: :delete %>.
+
+<h3> ADMIN TEST LINKS </h3>
+<br>
+Ban:
+<%= link_to "Ban user Menu", ban_user_path(val) %> |
+<%= link_to "Ban PUT", ban_update_user_path(val), :method => :put %> |
+<%= link_to "Ban PATCH", ban_update_user_path(val), :method => :patch %> |
+<%= link_to "Ban POST", ban_update_user_path(val), :method => :post %>.
+
+<br>
+Roles:
+<%= link_to "Edit role Menu", edit_roles_user_path(val) %> |
+<%= link_to "Role PUT", save_roles_user_path(val), :method => :put %>.
+
+<br>
+Misc: 
+<%= link_to "root", '/' %> |
+<%= link_to "index", index_path %> |
+<%= link_to "user section", user_show_section_path(val, 'photos') %> |
+<%= link_to "403", access_denied_path %>.

@@ -23,6 +23,11 @@ class User < ActiveRecord::Base
     return self.has_role?(:user)
   end
 
+  # check tester role
+  def is_tester? 
+    return self.has_role?(:tester)
+  end
+
   def roles_as_text
     text = ''
     self.roles.each do |role|

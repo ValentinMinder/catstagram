@@ -48,7 +48,11 @@
         <div class="col-lg-10">
           <div id="tags">
             <% if @photo.new_record? %>
-              <%= render 'tag_input' %>
+              <%= render 'tag_input', tag_name: "" %>
+            <% else %>
+              <% @photo.hashtags.each do |tag| %>
+                <%= render "tag_input", tag_name: tag.tag %>
+              <% end %>
             <% end %>
           </div>
           <a href="javascript:;", id="addTag">Add Tag</a>
@@ -65,5 +69,5 @@
 <% end %>
 
 <div style="display: none;" id="new_tag_form">
-  <%= render partial: 'tag_input', locals: {hashtag: false} %>
+  <%= render "tag_input", tag_name: "" %>
 </div>

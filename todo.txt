@@ -52,7 +52,7 @@ Iteration #3 - Due 07.06.2016
   - photo
     - index (DONE)
     - show (DONE)
-    - form (new/edit) (mostly DONE - need to fix partials with tags)
+    - form (new/edit) (DONE)
     - grid view (DONE)
   - hashtag
     - index (DONE)

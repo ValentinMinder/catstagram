@@ -1,13 +1,28 @@
-<h1>Roles attributed to <%= @user.username %> </h1> 
+<div class="pull-right">
+  <%= link_to "Return to " + @user.username + "'s profile", @user, :class => "btn btn-info" %>
+</div>
 
-<%= form_for(@user, :url => save_roles_user_path(@user), method: :put) do |f| %>
-  <% for role in Role.all %>
-    <div>
-      <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
-      <%= role.name %>
-    </div>
-  <% end %>
-  <div class="actions">
-    <%= f.submit "Sauvegarder" %>
+<h1>Roles attributed to <%= @user.username %> </h1>
+
+<%= form_for(@user, :url => save_roles_user_path(@user), method: :put, :html => {:class => "form-horizontal"}) do |f| %>
+
+  <div class="well bs-component">
+    <fieldset>
+      <div class="form-group">
+        <%= f.label "Roles", :class => "col-lg-2 control-label" %>
+        <div class="col-lg-10">
+          <% for role in Role.all %>
+            <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+            <%= role.name %><br>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="form-group actions">
+        <div class="col-lg-10 col-lg-offset-2">
+          <%= f.submit "Sauvegarder", :class => "btn btn-info" %>
+        </div>
+      </div>
+    </fieldset>
   </div>
 <% end %>

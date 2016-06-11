@@ -1,12 +1,12 @@
 <%= form_for @cat, :html => {:class => "form-horizontal"} do |f| %>
   <% if @cat.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-dismissible alert-danger" id="error_explanation">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
       <h2><%= pluralize(@cat.errors.count, "error") %> prohibited this cat from being saved:</h2>
-
       <ul>
-      <% @cat.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% @cat.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -41,21 +41,29 @@
         </div>
       </div>
 
-      <div class="form-group">
-        <div class="col-lg-2 control-label">
-          <strong>Is this your cat?</strong>
-        </div>
-        <div class="col-lg-10">
-          <%= f.radio_button :user_id, 1, :id=>"moi", :style=>"display:none;" %>
-          <label for="Yes" class="btn btn-success">1: Yes</label>
-          <%= f.radio_button :user_id, 2, :id=>"pas moi", :style=>"display:none;" %>
-          <label for="No" class="btn btn-danger">2: No</label>
-        </div>
-      </div>
-      
+      <% if user_signed_in? %>
+        <% if current_user.is_admin? %>
+          <div class="form-group">
+            <%= f.label "Cat Owner", :class => "col-lg-2 control-label" %>
+            <div class="col-lg-10">
+              <%= f.collection_select :user_id, User.all, :id, :username, {}, {:class => "form-control"} %><br>
+            </div>
+        <% else %>
+          <div class="form-group">
+            <%= f.label "Is this your cat?", :class => "col-lg-2 control-label" %>
+            <div class="col-lg-10">
+              <%= f.radio_button :user_id, current_user.id %>
+              <%= f.label :user_id, "Yes", :value => current_user.id %><br>
+              <%= f.radio_button :user_id, nil %>
+              <%= f.label :user_id, "No", :value => nil %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+
       <div class="form-group actions">
         <div class="col-lg-10 col-lg-offset-2">
-          <%= f.submit "Create Cat", :class => "btn btn-primary" %>
+          <%= f.submit @cat.new_record? ? "Create Cat" : "Edit Cat" , :class => "btn btn-primary" %>
         </div>
       </div>
     </fieldset>

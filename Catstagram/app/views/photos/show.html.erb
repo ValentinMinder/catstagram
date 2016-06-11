@@ -1,95 +1,60 @@
-<div class="container">
-  <p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <center>
+      <%= image_tag @photo.image_url %><br><br>
+    </center>
+    <%= link_to "by " + @photo.user.username, @photo.user if @photo.user %>
+    <br><br>
+    <% unless @photo.caption.blank? %>
+      <blockquote>
+        <p><%= @photo.caption %></p>
+      </blockquote>
+    <% end %>
 
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <center>
-        <%= image_tag @photo.image_url %>
-      </center>
-      <%= link_to "by " + @photo.user.username, @photo.user if @photo.user %>
-      <% unless @photo.caption.blank? %>
-        <blockquote>
-          <p><%= @photo.caption %></p>
-        </blockquote>
-      <% end %>
-
-      <% if @photo.cats.any? %>
-        <h3>Cats featured in this photo:</h3>
-        <% @photo.cats.each_slice(4) do |cats| %>
-          <div class="row">
-            <% cats.each do |cat| %>
-              <%= link_to cat do %>
-                <div class="col-lg-3">
-                  <div class="panel panel-default">
-                    <div class="panel-heading">
-                      <%= cat.catname %>
-                    </div>
-                    <div class="panel-body">
-                      <center>
-                        <%= image_tag cat.photos.last.image_url.thumb.url %>
-                      </center>
-                    </div>
+    <% if @photo.cats.any? %>
+      <h3>Cats featured in this photo:</h3>
+      <% @photo.cats.each_slice(4) do |cats| %>
+        <div class="row">
+          <% cats.each do |cat| %>
+            <%= link_to cat do %>
+              <div class="col-lg-3">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <%= cat.catname %>
+                  </div>
+                  <div class="panel-body">
+                    <center>
+                      <%= image_tag cat.photos.last.image_url.thumb.url %>
+                    </center>
                   </div>
                 </div>
-              <% end %>
+              </div>
             <% end %>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       <% end %>
-    </div>
-    <div class="panel-footer">
-      <% @photo.hashtags.each do |tag| %>
-        <%= link_to "#" + tag.tag, tag %>
+    <% end %>
+
+    <div class="pull-right">
+      <% if user_signed_in? and (current_user == @photo.user or current_user.is_admin?)%>
+        <%= link_to "Edit", edit_photo_path(@photo), :class => "btn btn-warning" %>
+        <%= link_to 'Delete', @photo, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
       <% end %>
-      <div class="pull-right">
-        <%= @photo.view_count %> &#664;
-        <%= @photo.like_count %> &#9829;
-      </div>
     </div>
   </div>
 
-
-
-
-
-
-
-  <p>
-    <%= image_tag @photo.image_url %>
-  </p>
-
-  <p>
-    <%= link_to "by " + @photo.user.username, @photo.user if @photo.user %>
-  </p>
-
-  <p>
-    <%= @photo.caption %>
-  </p>
-
-  <p>
-    <%= @photo.view_count %> <%= (@photo.view_count == 1) ? "view" : "views" %>
-  </p>
-
-  <p>
-    <%= @photo.like_count %> <%= (@photo.like_count == 1) ? "like" : "likes" %>
-  </p>
-
-  <p>
-    <strong>Cats featured in this photo:</strong>
-    <ul>
-    <% @photo.cats.each do |cat| %>
-      <li><%= link_to cat.catname, cat %>
-    <% end %>
-    </ul>
-  </p>
-
-  <p>
-    <strong>Tags: </strong>
+  <div class="panel-footer">
     <% @photo.hashtags.each do |tag| %>
-      <%= link_to tag.tag, tag %>;
+      <%= link_to "#" + tag.tag, tag %>
     <% end %>
-  </p>
-
-  <%= link_to 'Edit', edit_photo_path(@photo) %> |
-  <%= link_to 'Back', photos_path %>
+    &nbsp;
+    <div class="pull-right">
+      <% if user_signed_in? and current_user != @photo.user %>
+        <%= link_to "Report", report_photo_path(@photo), :class => "btn btn-xs btn-danger" %> &nbsp;
+        <%= link_to "Like", like_photo_path(@photo), :class => "btn btn-xs btn-success" %> &nbsp;
+      <% end %>
+      <%= @photo.view_count %> &#664;
+      <%= @photo.like_count %> &#9829;
+    </div>
+  </div>
 </div>

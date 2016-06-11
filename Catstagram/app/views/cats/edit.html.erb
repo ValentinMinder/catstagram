@@ -1,8 +1,7 @@
-<div class="container">
-  <h1>Editing Cat "<%= @cat.catname %>"</h1>
-
-  <%= render 'form' %>
-
-  <%= link_to 'Show', @cat %> |
-  <%= link_to 'Back', cats_path %>
+<div class="pull-right">
+  <%= link_to "Return to " + @cat.catname + "'s profile", @cat, :class => "btn btn-info" %>
 </div>
+
+<h1>Editing Cat "<%= @cat.catname %>"</h1>
+
+<%= render 'form' %>

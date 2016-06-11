@@ -1,16 +1,22 @@
-<div class="container">
-  <p id="notice"><%= notice %></p>
+<h1>Listing Users</h1>
 
-  <h1>Listing Users</h1>
-
-  <% @users.each_slice(4) do |users| %>
-    <div class="row">
-      <% users.each do |user| %>
-        <%= link_to user do %>
-          <div class="col-lg-3">
+<% @users.each_slice(4) do |users| %>
+  <div class="row">
+    <% users.each do |user| %>
+      <%= link_to user do %>
+        <div class="col-lg-3">
+          <% if user_signed_in? and current_user == user %>
+            <div class="panel panel-success">
+          <% else %>
             <div class="panel panel-default">
+          <% end %>
               <div class="panel-heading">
                 <%= user.username %>
+                <div class="pull-right">
+                  <% if user.roles_as_text.include? "admin" %>
+                    <span class="label label-info">Admin</span>
+                  <% end %>
+                </div>
               </div>
               <div class="panel-body">
                 <center>
@@ -22,43 +28,8 @@
                 </center>
               </div>
             </div>
-          </div>
-        <% end %>
+        </div>
       <% end %>
-    </div>
-  <% end %>
-
-
-
-
-  <table>
-    <thead>
-      <tr >
-        <th></th>
-        <th>Username</th>
-        <th>Cats</th>
-        <th>Photos</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @users.each do |user| %>
-        <tr>
-          <td>
-            <% if (user.avatar_url != "") %>
-              <img src="<%=user.avatar_url%>" alt="Av." style="height:20px;">
-            <% end %>
-          </td>
-          <td><%= link_to user.username, user %></td>
-          <!-- Would be better, but doesn't work coz of # char transformed to '%25' -->
-          <!-- <%= link_to user.cats.count, user_show_section_path(user.id, "cats") %> -->
-          <td> <a href=<%=user_path(user.id)%>#cats>   <%= user.cats.count %>   </a> </td>
-          <td> <a href=<%=user_path(user.id)%>#photos> <%= user.photos.count %> </a> </td>
-          <td> <%= link_to 'Edit Roles', edit_roles_user_path(user) %> </a> </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
-</div>
+    <% end %>
+  </div>
+<% end %>

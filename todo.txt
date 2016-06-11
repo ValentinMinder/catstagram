@@ -41,21 +41,21 @@ Iteration #3 - Due 07.06.2016
 - prettify upload form
 - clean and pretty bootstrap layout, applied to:
   - cat
-    - index (mostly DONE)
-    - show (mostly DONE)
-    - form (new/edit) (DONE - need to fix owner choice)
+    - index (DONE)
+    - show (DONE)
+    - form (new/edit) (DONE)
   - user
-    - index (mostly DONE)
-    - show (mostly DONE - need to setup admin panel)
-    - form (new/edit) (mostly DONE - need to setup avatar upload)
-    - ban form?
+    - index (DONE)
+    - show (DONE)
+    - form (new/edit) (mostly DONE - need to setup avatar upload?)
+    - ban form (DONE)
   - photo
-    - index (mostly DONE)
-    - show (mostly DONE - need to add like/report buttons)
+    - index (DONE)
+    - show (DONE)
     - form (new/edit) (mostly DONE - need to fix partials with tags)
     - grid view (DONE)
   - hashtag
-    - index (? need to decide what to do here)
+    - index (DONE)
     - show (DONE)
 
   - main landing page
@@ -64,10 +64,15 @@ Iteration #3 - Due 07.06.2016
 - prepare presentation
 
 Valentin:
-- navigation 
+- navigation
 - header with search (DONE, TBD search form)
 - footer (DONE)
 - home page / index (FOR NOW: photos index)
 - admin view (DONE) to view reported photos and take action (TBD)
 Eléonore:
 - consistent listing / partial views
+
+
+KNWON ISSUES:
+=============
+- j'arrive pas a ban (toujours firefox?)

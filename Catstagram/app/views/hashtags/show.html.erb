@@ -1,29 +1,8 @@
-<div class="container">
-  <p id="notice"><%= notice %></p>
-
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h1>#<%= @hashtag.tag %></h1>
-    </div>
-    <div class="panel-body">
-      <%= render 'photos/grid' %>
-    </div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h1>#<%= @hashtag.tag %></h1>
   </div>
-
-
-
-
-
-
-
-
-  <p>
-    <strong>Tag:</strong>
-    <%= @hashtag.tag %>
-  </p>
-
-  <%= render 'photos/grid' %>
-
-  <%= link_to 'Edit', edit_hashtag_path(@hashtag) %> |
-  <%= link_to 'Back', hashtags_path %>
+  <div class="panel-body">
+    <%= render 'photos/grid' %>
+  </div>
 </div>

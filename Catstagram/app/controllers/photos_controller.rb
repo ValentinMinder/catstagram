@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: [:show, :edit, :update, :destroy]
+  before_action :set_photo, only: [:show, :edit, :update, :destroy, :like_update, :report_update]
 
   load_and_authorize_resource :except => [:index]
 
@@ -24,10 +24,25 @@ class PhotosController < ApplicationController
   def edit
   end
 
+  def like_update
+    respond_to do |format|
+      @photo.increment!(:like_count, 1)
+      format.html {redirect_to @photo, notice: "Thank you for the like <3"}
+    end
+  end
+
+  def report_update
+    respond_to do |format|
+      @photo.increment!(:report_count, 1)
+      format.html {redirect_to @photo, alert: "Report sent"}
+    end
+  end
+
   # POST /photos
   # POST /photos.json
   def create
     @photo = Photo.new(photo_params)
+    @photo.user = current_user
 
     set_tags
 
@@ -75,15 +90,17 @@ class PhotosController < ApplicationController
       @hashtags = []
       if tags_param
         tags_param.each do |t|
-          tag = t.downcase
-          current = Hashtag.find_by(tag: tag)
-          if current
-            p "loading existing: " + tag
-            @hashtags.push(current)
-          else
-            p "creating new: " + tag
-            tag = Hashtag.create(:tag => tag)
-            @hashtags.push(tag)
+          unless t.blank?
+            tag = t.downcase
+            current = Hashtag.find_by(tag: tag)
+            if current
+              p "loading existing: " + tag
+              @hashtags.push(current)
+            else
+              p "creating new: " + tag
+              tag = Hashtag.create(:tag => tag)
+              @hashtags.push(tag)
+            end
           end
         end
       end

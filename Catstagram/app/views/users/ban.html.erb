@@ -1,10 +1,14 @@
+<div class="pull-right">
+  <%= link_to "Return to " + @user.username + "'s profile", @user, :class => "btn btn-info" %>
+</div>
+
 <h1>Ban User <%= @user.username %></h1>
 
-<%= form_for @user, url: {controller: "users", action: "ban_update"}, method: "put", class: "ban_form" do |f| %>
+<%= form_for @user, url: {controller: "users", action: "ban_update"}, method: "put", class: "ban_form", :html => {:class => "form-horizontal"} do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
+    <div class="alert alert-dismissible alert-danger" id="error_explanation">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
       <ul>
       <% @user.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -13,13 +17,20 @@
     </div>
   <% end %>
 
-  <!-- date : Time.now + 1.days + 1.weeks -->
-  <%= date_field(:user, :banned_until) %>
+  <div class="well bs-component">
+    <fieldset>
+      <div class="form-group">
+        <%= f.label "Ban until", :class=> "col-lg-2 control-label" %>
+        <div class="col-lg-10">
+          <%= date_field(:user, :banned_until) %><br><br>
+        </div>
+      </div>
 
-  <div class="actions">
-    <%= f.submit %>
+      <div class="form-group actions">
+        <div class="col-lg-10 col-lg-offset-2">
+          <%= f.submit "Ban User", :class => "btn btn-danger" %>
+        </div>
+      </div>
+    </fieldset>
   </div>
 <% end %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>

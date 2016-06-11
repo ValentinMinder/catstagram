@@ -1,63 +1,30 @@
-<div class="container">
-  <p id="notice"><%= notice %></p>
-
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h1><%= @cat.catname %></h1>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <div class="pull-right">
+      <br>
+      <% if user_signed_in? and (current_user == @cat.user or current_user.is_admin?)%>
+        <%= link_to "Edit", edit_cat_path(@cat), :class => "btn btn-warning" %>
+        <%= link_to 'Delete', @cat, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+      <% end %>
     </div>
-    <div class="panel-body">
-      <% unless @cat.description.blank? %>
-        <blockquote>
-          <p><%= @cat.description %></p>
-        </blockquote>
-      <% end %>
-      <% unless @cat.city.blank? %>
-        <strong>From</strong> <%= @cat.city %><br>
-      <% end %>
-      <% if @cat.user %>
-        <strong>Belongs to</strong> <%= link_to @cat.user.username, @cat.user %><br>
-      <% else %>
-        <strong>Ownerless</strong><br>
-      <% end %>
-      <strong>Birth date </strong> <%= @cat.birth_time %>
-
-      <%= render 'photos/grid' %>
-    </div>
+    <h1><%= @cat.catname %></h1>
   </div>
-
-  <h1><%= @cat.catname %></h1>
-
-  <!-- shows profile photo of cat, if any -->
-  <p>
-    <% if (@profile_photo) %>
-      <%= link_to(image_tag(@profile_photo.image_url.thumb.url), @profile_photo) %>
+  <div class="panel-body">
+    <% unless @cat.description.blank? %>
+      <blockquote>
+        <p><%= @cat.description %></p>
+      </blockquote>
     <% end %>
-  </p>
+    <% unless @cat.city.blank? %>
+      <strong>From</strong> <%= @cat.city %><br>
+    <% end %>
+    <% if @cat.user %>
+      <strong>Belongs to</strong> <%= link_to @cat.user.username, @cat.user %><br>
+    <% else %>
+      <strong>Ownerless</strong><br>
+    <% end %>
+    <strong>Birth date </strong> <%= @cat.birth_time %>
 
-  <p>
-    <strong>Owner:</strong>
-    <%= link_to @cat.user.username, @cat.user if @cat.user  %>
-    <%= "No owner." if !@cat.user  %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= @cat.description %>
-  </p>
-
-  <p>
-    <strong>City:</strong>
-    <%= @cat.city %>
-  </p>
-
-  <p>
-    <strong>Birth time:</strong>
-    <%= @cat.birth_time %>
-  </p>
-
-
-  <p>
-  <%= link_to 'Edit', edit_cat_path(@cat) %> |
-  <%= link_to 'Back', cats_path %>
-  </p>
+    <%= render 'photos/grid' %>
+  </div>
 </div>

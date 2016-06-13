@@ -19,17 +19,17 @@ Rails.application.routes.draw do
   end
   resources :cats
   resources :users do
+    # for admin to see banned users
+    collection do
+      get :banned
+    end 
     member do
+      get :ban
+      put :ban_update
       put :save_roles
       get :edit_roles
     end
   end
-
-  # get the ban form / update the ban status of a user
-  get 'users/:id/ban', to: 'users#ban', as:'ban_user'
-  put 'users/:id/ban', to: 'users#ban_update', as:'ban_update_user'
-  patch 'users/:id/ban' => 'users#ban_update'
-  post 'users/:id/ban' => 'users#ban_update'
 
   # used to show specific section of a user (cats ot photos)
   # doesn't work properly as '#' is replaced by '%25' and doesn't work anymore
@@ -44,7 +44,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
   # destination of / and index_path
-  root to: 'photos#index', as: 'index'
+  root to: 'photos#index_main', as: 'index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

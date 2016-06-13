@@ -159,7 +159,7 @@ The report asks for confirmation.
 
 ![img/report.png](img/report.png)
 
-As soon as a photo is reported, the admin view changes: there is an additionnal button ***"New Reports!"*** in the navigation bar, that redirect to  `/photos/reported`. It displays the same interface as the photos index, but only photos with a `report_count` greater than 0 and ordered by this count, and then by date.
+As soon as a photo is reported, the admin view changes: there is an additionnal button ***"New Reports! (X)"*** in the navigation bar, where `X` is the number of reported photos, that redirect to  `/photos/reported`. It displays the same interface as the photos index, but only photos with a `report_count` greater than 0 and ordered by this count, and then by date.
 
 If the photo is reported, an admin has a another option, to reset the `report_count`. It also asks for confirmation. Of course, it may also edit or delete the picture itself, or even go to the user's profile and delete or ban him, as an admin has managing rights.
 
@@ -185,3 +185,14 @@ On the index of photos, it will look like this:
 And on the show view of a specific photo, like this (in the footer):
 
 ![img/VLCR_show.png](img/VLCR_show.png)
+
+### Banning users
+
+To be written.
+
+### Layouts and partial views
+
+All index views use the same layout (boxes of items) in a partial view `_grid`, with two parameters `@title` and `@collection`, where `collection` may be `photos`, `cats`, `users` or `hashtags`. 
+
+- This allows the usage of the same layout in the home screen (recent photos), the photos listing, the photos of a cat, the photos uploaded by a user and the result of photos.
+- It also allows the presence of several partial views on the same page, as on the home screen (the most recent of all collection) or the search results.

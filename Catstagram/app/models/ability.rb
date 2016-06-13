@@ -44,23 +44,24 @@ class Ability
         can :manage, Cat
         can :manage, Hashtag
 
+        # only admin can see and change roles (fully blocked for users)
         can :manage, Role
-
-        # DOES NOTHING FOR NOW.
-        can :see_roles, User
+        can :manage_role, User
 
         # reset report of photos, only of others
         can :reset_report_photo, Photo do |photo|
             photo.user_id != user.id
         end
 
-        ## TODO: only admin can see and change roles
-        ## TODO: only admin can see and change banned status
+        # only admin can see and change banned status
+        can :see_banned, User
+        can :change_banned, User
     end
 
     if user.has_role?(:user)
         # user may manage their own profile, photos, cats
-        ## TODO: shouldnt change roles or banned status!
+        # user can see banned status, but can't change banned status!
+        can :see_banned, User
         can :manage, User do |useralt|
             user.id == useralt.id
         end

@@ -1,0 +1,58 @@
+<!-- DEFINE FIRST @hashtag the collection to show and @title -->
+
+<p>
+  <h3 id="tags"><%= @title_tag + " (" + @hashtags.count.to_s + ")" %>:</h3>
+  <% unless @hashtags.any? %>
+    No hashtags yet!
+  <% end %>
+  <% @hashtags.each_slice(4) do |tag| %>
+    <div class="row">
+      <% tag.each do |tag| %>
+        <%= link_to tag do %>
+          <div class="col-lg-3">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <%= tag.tag %>
+                <div class="pull-right">
+                  <%= tag.photos.size %> &#128247; <!-- photos --> 
+
+                  <!-- global total of cats reached, may be greater than the total of cats! --> 
+                  <%= 
+                    init = 0
+                    tag.photos.each do |p|
+                      init += p.cats.size
+                    end
+                    init
+                  %> &#128049; <!-- cats -->
+
+                  <!-- global total of users reached, may be greater than the total of users! --> 
+                  <%= 
+                    init = 0
+                    if (tag.photos.any?)
+                      tag.photos.each do |p|
+                        p.cats.each do |c|
+                          if (c.user_id != nil)
+                            init += 1
+                          end
+                        end
+                      end
+                    end
+                    init
+                  %> &#9731;
+
+                </div>
+              </div>
+              <div class="panel-body">
+                <% if tag.photos.any? %>
+                  <%= image_tag tag.photos.first.image_url.thumb %>
+                <% else %> 
+                  <strong> No photos yet in <%= tag.tag %> </strong>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</p>

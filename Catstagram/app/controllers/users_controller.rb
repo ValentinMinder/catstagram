@@ -9,6 +9,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+    # for partial generic views
+    @title_user = "All Catstagram Users"
     @users = User.all
   end
 
@@ -16,7 +18,10 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @title = "Photos uploaded by " + @user.username
-    @item = @user
+    @title_cat = "Cats belonging to " + @user.username
+    # for partial generic views
+    @photos = @user.photos
+    @cats = @user.cats
   end
 
   # GET /users/new
@@ -28,17 +33,43 @@ class UsersController < ApplicationController
   def edit
   end
 
+  # GET /users/banned
+  # same as index but only banned users.
+  def banned
+    authorize! :change_banned, @current_user
+    respond_to do |format|
+      if !current_user.is_admin?
+        format.html {redirect_to users_path, alert: "You can't see banned people."}
+      else 
+        @users = User.all.select{ |u| u.is_banned }
+        @title = "Banned Users"
+        render 'index'
+      end
+    end
+    
+  end
+
+
   # GET /users/1/ban
   # Automatically renders ban.html.erb
   def ban
+    authorize! :change_banned, @user
+    if current_user == @user
+      redirect_to @user, alert: "You can't ban yourself!"
+    else 
+      render 'ban'
+    end
   end
 
   # PATCH/PUT /users/1/ban
   # PATCH/PUT /users/1.json/ban
   # Allows the update of banned_until field 
   def ban_update
+    authorize! :change_banned, @user
     respond_to do |format|
-      if @user.update(ban_params)
+      if current_user == @user
+        format.html {redirect_to @user, alert: "You can't ban yourself!"}
+      elsif @user.update(ban_params)
         format.json { render :ban, status: :ok, location: @user }
         if @user.is_banned
           format.html { redirect_to @user, notice: 'User was successfully banned.' }
@@ -93,10 +124,11 @@ class UsersController < ApplicationController
   end
 
   def edit_roles
-
+    authorize! :manage, Role
   end
 
   def save_roles
+    authorize! :manage, Role
     @user.roles.each do |role|
       @user.roles.delete(role)
     end
@@ -112,6 +144,7 @@ class UsersController < ApplicationController
   end
 
   def access_denied
+    #304 rendering.
   end
 
   private

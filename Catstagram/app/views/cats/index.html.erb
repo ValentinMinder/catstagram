@@ -4,37 +4,6 @@
   </div>
 <% end %>
 
-<h1>Listing Cats</h1>
+<h1> Cats on Catstagram </h1>
 
-<% @cats.each_slice(4) do |cats| %>
-  <div class="row">
-    <% cats.each do |cat| %>
-      <%= link_to cat do %>
-        <div class="col-lg-3">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-                <%= cat.catname %>
-                <% unless cat.city.blank? %>
-                  <small>from <%= cat.city %></small>
-                <% end %>
-                <div class="pull-right">
-                  <% if not cat.user %>
-                    <span class="label label-warning">Ownerless</span>
-                  <% elsif user_signed_in? and current_user == cat.user %>
-                    <span class="label label-success">Yours!</span>
-                  <% end %>
-                </div>
-            </div>
-            <div class="panel-body">
-              <center>
-                <% if cat.photos.last %>
-                  <%= image_tag cat.photos.last.image_url.thumb.url %>
-                <% end %>
-              </center>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-<% end %>
+<%= render 'cats/grid' %>

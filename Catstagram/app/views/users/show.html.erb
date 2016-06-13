@@ -34,31 +34,7 @@
     <% end %>
     <strong>Joined at:</strong> <%= @user.created_at %>
 
-    <% if @user.cats.any? %>
-      <h3 id="cats">My cats <%= "(" + @user.cats.count.to_s + ")" %>:</h3>
-      <% @user.cats.each_slice(4) do |cats| %>
-        <div class="row">
-          <% cats.each do |cat| %>
-            <%= link_to cat do %>
-              <div class="col-lg-3">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <%= cat.catname %>
-                  </div>
-                  <% unless cat.photos.last.blank? %>
-                    <div class="panel-body">
-                      <center>
-                        <%= image_tag cat.photos.last.image_url.thumb.url %>
-                      </center>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
-      <% end %>
-    <% end %>
+    <%= render 'cats/grid' %>
 
     <%= render 'photos/grid' %>
   </div>

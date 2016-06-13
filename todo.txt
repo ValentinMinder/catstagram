@@ -67,8 +67,11 @@ Valentin:
 - navigation
 - header with search (DONE, TBD search form)
 - footer (DONE)
-- home page / index (photos index = DONE)
+- home page / index (index of everything: DONE)
 - admin view (DONE) to view reported photos and take action (DONE)
+- view of banned users DONE
+- avatar upload: DONE
+- use the same reusable layout everywhere for preview: DONE
 Eléonore:
 - consistent listing / partial views
 

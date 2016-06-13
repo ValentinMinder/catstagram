@@ -48,9 +48,11 @@
           <!-- Admin NavBar -->
           <% if current_user.is_admin? %>
             <!-- show the warning only if there are reported users -->
-            <% if current_user.has_reported? %>
+            <% if current_user.has_reported_photo? %>
               <li>
-                <%= link_to 'NEW REPORTS!', reported_photos_path %>
+                <a href="/photos/reported"> New Reports <span class="badge">
+                  <%= current_user.number_reported_photo? %>
+                </span></a>
               </li>
             <% end %>
             <li class="dropdown">
@@ -67,10 +69,12 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                  <%= link_to 'View Reported Photos', reported_photos_path %>
+                  <%= link_to 'View Reported Photos (' + current_user.number_reported_photo?.to_s + ')' , reported_photos_path %>
                 </li>
                 <li class="divider"></li>
-                <li><a href="#">TDB: ban users</a></li>
+                <li>
+                  <%= link_to 'View Banned Users (' + current_user.number_banned_users?.to_s + ')', banned_users_path %>
+                </li>
               </ul>
             </li>
           <% end %>

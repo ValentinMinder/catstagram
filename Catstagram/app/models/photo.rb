@@ -20,6 +20,6 @@ class Photo < ActiveRecord::Base
   
   private
     def image_size_validation
-      errors[:image_url] << " should be less than 1MB" if image_url.size > 1.megabytes
+      errors[:image_url] << " should be less than 5MB" if image_url.size > 5.megabytes
     end
 end

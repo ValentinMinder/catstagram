@@ -1,0 +1,41 @@
+<!-- DEFINE @cats! -->
+<p>
+  <h3 id="cats"><%= @title_cat + " (" + @cats.count.to_s + ")" %>:</h3>
+  <% unless @cats.any? %>
+    No cats yet!
+  <% end %>
+
+  <% @cats.each_slice(4) do |cats| %>
+    <div class="row">
+      <% cats.each do |cat| %>
+        <%= link_to cat do %>
+          <div class="col-lg-3">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                  <%= cat.catname %>
+                  <% unless cat.city.blank? %>
+                    <small>from <%= cat.city %></small>
+                  <% end %>
+                  <div class="pull-right">
+                    <strong><%= cat.photos.count %></strong> &#128247; <!-- photos -->
+                    <% if not cat.user %>
+                      <span class="label label-warning">Ownerless</span>
+                    <% elsif user_signed_in? and current_user == cat.user %>
+                      <span class="label label-success">Yours!</span>
+                    <% end %>
+                  </div>
+              </div>
+              <div class="panel-body">
+                <center>
+                  <% if cat.photos.last %>
+                    <%= image_tag cat.photos.last.image_url.thumb.url %>
+                  <% end %>
+                </center>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</p>

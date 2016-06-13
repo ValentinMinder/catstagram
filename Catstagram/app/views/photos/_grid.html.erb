@@ -1,23 +1,48 @@
+<!-- DEFINE FIRST @photo the collection to show and @title -->
+
 <p>
-  <h3 id="photos"><%= @title + " (" + @item.photos.count.to_s + ")" %>:</h3>
-  <% unless @item.photos.any? %>
+  <h3 id="photos"><%= @title + " (" + @photos.count.to_s + ")" %>:</h3>
+  <% unless @photos.any? %>
     No photos yet!
   <% end %>
-  <table class="table table-striped table-hover">
-    <tbody>
-      <% @item.photos.each_slice(8) do |photos| %>
-        <tr>
-          <% photos.each do |photo| %>
-            <td><center>
-              <%= link_to photo do %>
-                <%= image_tag photo.image_url.thumb.url %><br>
-                <%= photo.view_count %> &#664;
-                <%= photo.like_count %> &#9829;
-              <% end %>
-            </center></td>
-          <% end %>
-        </tr>
+  <% @photos.each_slice(4) do |photos| %>
+    <div class="row">
+      <% photos.each do |photo| %>
+        <%= link_to photo do %>
+          <div class="col-lg-3">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <!-- Show number of views, like, cats, and reports (if any) -->
+                <%= photo.view_count %> &#8635; <!-- CLOCKWISE OPEN CIRCLE ARROW -->
+                <%= photo.like_count %> &hearts;
+                <%= photo.cats.size %> &#128049; <!-- cats -->
+                
+                </br> 
+                <% if photo.is_reported? %>
+                  <% if can? :report_photo, photo or can? :test, photo %>
+                    <%= photo.report_count %> &#9888; <!-- WARNING SIGN -->
+                  <% end %>
+                  <% if can? :manage, photo or can? :test, photo %>
+                    <span class="label label-warning"> REPORTED </span>
+                  <% end %>
+                <%end%>
+                <% if current_user == photo.user %>
+                    <span class="label label-info"> Yours! </span>
+                <% end %>
+                <% if photo.is_new? %>
+                    <span class="label label-success"> new </span>
+                <% end %>
+                  .
+              </div>
+              <div class="panel-body">
+                <center>
+                  <%= image_tag photo.image_url.thumb.url %><br>  
+                </center>
+              </div>
+            </div>
+          </div>
+        <% end %>
       <% end %>
-    </tbody>
-  </table>
+    </div>
+  <% end %>
 </p>

@@ -1,14 +1,3 @@
 <h1>Listing Hashtags</h1>
 
-<table class="table table-striped table-hover">
-  <thead>
-    <tr>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @hashtags.each do |tag| %>
-      <tr><td><%= link_to tag.tag, tag %></td></tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'grid' %>

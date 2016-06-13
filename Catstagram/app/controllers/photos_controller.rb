@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy, :like_update, :report_update]
 
   # Load authorization ressources for everything.
-  load_and_authorize_resource :except => []
+  load_and_authorize_resource :except => [:index_main]
 
   # Like & report authorization are manually handled! BE CARFEFUL!
   skip_authorize_resource :only => [:like, :report, :reset]
@@ -50,7 +50,7 @@ class PhotosController < ApplicationController
     end
   end
 
-
+  # same as index, but only for the admin, and only reported photos.
   def reported
     #ordered by report count, then by most recent
     @photos = Photo.where("report_count > 0").order(report_count: :desc, created_at: :desc)
@@ -69,8 +69,21 @@ class PhotosController < ApplicationController
   # GET /photos.json
   def index
     # most recent picture first!
-    @title = "Photos on Catstagram"
+    @title = "Latest photos"
     @photos = Photo.all.order(created_at: :desc)
+  end
+
+  def index_main
+    # most recent picture first!
+    @title = "Latest Photos"
+    @photos = Photo.all.order(created_at: :desc).limit(8)
+    @hashtags = Hashtag.all.order(created_at: :desc).limit(4)
+    @users = User.all.order(created_at: :desc).limit(4)
+    @cats = Cat.all.order(created_at: :desc).limit(4)
+    @title_user = "Latest Users"
+    @title_tag = "Latest Hashtags"
+    @title_cat = "Latest Cats"
+    render 'layouts/index'
   end
 
   # GET /photos/1

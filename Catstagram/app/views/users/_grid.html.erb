@@ -1,0 +1,44 @@
+<p>
+  <h3 id="users"><%= @title_user + " (" + @users.count.to_s + ")" %>:</h3>
+  <% unless @users.any? %>
+    No users yet!
+  <% end %>
+
+  <% @users.each_slice(4) do |users| %>
+    <div class="row">
+      <% users.each do |user| %>
+        <%= link_to user do %>
+          <div class="col-lg-3">
+            <% if user_signed_in? and current_user == user %>
+              <div class="panel panel-success">
+            <% else %>
+              <div class="panel panel-default">
+            <% end %>
+                <div class="panel-heading">
+                  <%= user.username %>
+                  <div class="pull-right">
+                    <strong><%= user.cats.count %></strong> &#128049; <!-- cats -->
+                    <strong><%= user.photos.count %></strong> &#128247; <!-- photos -->
+                    <!-- only authorized users -->
+                    <% if can? :see_banned, user and user.is_banned %>
+                      <span class="label label-warning">Banned</span>
+                    <% end %>
+                    <% if user.is_admin? %>
+                      <span class="label label-info">Admin</span>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="panel-body">
+                  <center>
+                    <% unless user.avatar_url.blank? %>
+                      <%= image_tag user.avatar_url.thumb %><br>
+                    <% end %>
+                  </center>
+                </div>
+              </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</p>

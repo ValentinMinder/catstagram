@@ -6,14 +6,16 @@ class HashtagsController < ApplicationController
   # GET /hashtags
   # GET /hashtags.json
   def index
-    @hashtags = Hashtag.all
+    #alphabetical order!
+    @hashtags = Hashtag.all.order(:tag)
+    @title_tag = "All Catstagram Hashtags "
   end
 
   # GET /hashtags/1
   # GET /hashtags/1.json
   def show
     @title = "Photos in this tag"
-    @item = @hashtag
+    @photos = @hashtag.photos
   end
 
   # GET /hashtags/new

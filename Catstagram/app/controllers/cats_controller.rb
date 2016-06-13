@@ -6,6 +6,7 @@ class CatsController < ApplicationController
   # GET /cats
   # GET /cats.json
   def index
+    @title_cat = "All Catstagram Cats"
     @cats = Cat.all
   end
 
@@ -13,7 +14,8 @@ class CatsController < ApplicationController
   # GET /cats/1.json
   def show
     @title = "Photos of this cat"
-    @item = @cat
+    # for partial generic views
+    @photos = @cat.photos
   end
 
   # GET /cats/new

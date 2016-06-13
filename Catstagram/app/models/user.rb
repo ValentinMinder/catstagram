@@ -28,6 +28,11 @@ class User < ActiveRecord::Base
     return self.has_role?(:tester)
   end
 
+  #Returns is there are reported photos (it is the only controller accessible everywhere!)
+  def has_reported?
+    return (Photo.where("report_count > 0").size > 0)
+  end
+
   def roles_as_text
     text = ''
     self.roles.each do |role|

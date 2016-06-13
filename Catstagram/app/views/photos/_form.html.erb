@@ -30,7 +30,7 @@
       </div>
 
       <div class="form-group">
-        <%= f.label "Cats on photo", :class => "col-lg-2 control-label" %>
+        <%= f.label "Cats on photo (use cmd or ctrl to select multiple cats)", :class => "col-lg-2 control-label" %>
         <div class="col-lg-10">
           <%= f.collection_select :cat_ids, Cat.all, :id, :catname, {}, {:multiple => true, :class => "form-control"} %>
         </div>

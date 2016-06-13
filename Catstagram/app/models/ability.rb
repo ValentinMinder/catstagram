@@ -49,6 +49,11 @@ class Ability
         # DOES NOTHING FOR NOW.
         can :see_roles, User
 
+        # reset report of photos, only of others
+        can :reset_report_photo, Photo do |photo|
+            photo.user_id != user.id
+        end
+
         ## TODO: only admin can see and change roles
         ## TODO: only admin can see and change banned status
     end
@@ -70,6 +75,24 @@ class Ability
         can :create, Hashtag
         can :create, Cat
         can :create, Photo
+
+        # can like & report photos, only of others
+        # WARNING: calling with can? will work to disable buttons
+        # HOWEVER, 
+        can :like_photo, Photo do |photo|
+            photo.user_id != user.id
+        end
+        can :report_photo, Photo do |photo|
+            photo.user_id != user.id
+        end
+    end
+
+    if user.has_role?(:tester)
+        can :test, User
+        can :test, Photo
+        can :test, Cat
+        can :test, Hashtag
+        can :test, Role
     end
 
     # everyone (guest) can read specified models

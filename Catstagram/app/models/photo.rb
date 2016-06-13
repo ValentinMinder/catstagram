@@ -7,6 +7,16 @@ class Photo < ActiveRecord::Base
   
   validates_processing_of :image_url
   validate :image_size_validation
+
+  # returns true if a picture is reported.
+  def is_reported?
+    (report_count > 0)
+  end
+
+  # returns true if a picture is newer than 5 min (for the purpose of the presentation)
+  def is_new?
+    (created_at > Time.now - 5.minutes)
+  end
   
   private
     def image_size_validation

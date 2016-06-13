@@ -1,12 +1,76 @@
 class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy, :like_update, :report_update]
 
-  load_and_authorize_resource :except => [:index]
+  # Load authorization ressources for everything.
+  load_and_authorize_resource :except => []
+
+  # Like & report authorization are manually handled! BE CARFEFUL!
+  skip_authorize_resource :only => [:like, :report, :reset]
+
+  #======================================================================
+  ## WARNING - LIKE & REPORT & RESET ARE OPEN TO ALL USER WITH THESE RIGHTS!
+  ## DO NOT TRUST USER INPUT / DO NOT MODIFY OTHER THINGS IN THE PHOTO.
+  # Moreover, its impossible to restrict a user to like/report/reser it own photo with cancancan 
+  # (as the owner has full rights over the photo...) but we do it programmatically in the reply!
+  def like
+    authorize! :like_photo, @photo
+
+
+    respond_to do |format|
+      if current_user == @photo.user
+        format.html {redirect_to @photo, notice: "You can't like your own photo, you narcissistic self-obsessed user!"}
+      else 
+        @photo.increment!(:like_count, 1)
+        format.html {redirect_to @photo, notice: "Thank you for the like <3"}
+      end
+    end
+  end
+
+  def report
+    authorize! :report_photo, @photo
+    respond_to do |format|
+      if current_user == @photo.user
+        format.html {redirect_to @photo, alert: "Cannot report your own photo, unfortunately."}
+      else 
+        @photo.increment!(:report_count, 1)
+        format.html {redirect_to @photo, notice: "Report sent"}
+      end
+    end
+  end
+
+  def reset
+    authorize! :reset_report_photo, @photo
+    respond_to do |format|
+      if current_user == @photo.user
+        format.html {redirect_to @photo, alert: "Cannot reset report on your own picture..."}
+      else 
+        @photo.update_attribute(:report_count, 0)
+        format.html {redirect_to @photo, notice: "Report value reset"}
+      end
+    end
+  end
+
+
+  def reported
+    #ordered by report count, then by most recent
+    @photos = Photo.where("report_count > 0").order(report_count: :desc, created_at: :desc)
+    if (@photos.size > 0)
+      @title = "Reported photos"
+    else
+      @title = "No reported photos"
+    end
+    render 'index'
+  end
+
+  #======================================================================
+  # DEFAULT REST METHODS
 
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.all
+    # most recent picture first!
+    @title = "Photos on Catstagram"
+    @photos = Photo.all.order(created_at: :desc)
   end
 
   # GET /photos/1
@@ -22,20 +86,6 @@ class PhotosController < ApplicationController
 
   # GET /photos/1/edit
   def edit
-  end
-
-  def like_update
-    respond_to do |format|
-      @photo.increment!(:like_count, 1)
-      format.html {redirect_to @photo, notice: "Thank you for the like <3"}
-    end
-  end
-
-  def report_update
-    respond_to do |format|
-      @photo.increment!(:report_count, 1)
-      format.html {redirect_to @photo, alert: "Report sent"}
-    end
   end
 
   # POST /photos
@@ -116,8 +166,6 @@ class PhotosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
       params.require(:photo).permit(:image_url, :caption,
-                                    :view_count, :like_count, :report_count,
-                                    :remove_image_url,
                                     :cat_ids => [],
                                     :hashtags => [])
     end

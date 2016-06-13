@@ -3,10 +3,20 @@ Rails.application.routes.draw do
 
   # custom overriden controller allows to insert custum field at registration
   # source: http://jacopretorius.net/2014/03/adding-custom-fields-to-your-devise-user-model-in-rails-4.html
-  # todo: modify devise views
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :hashtags
-  resources :photos
+  resources :photos do
+    # for admin to see reported photos
+    collection do
+      get :reported
+    end 
+    # for user/admin to like/report/reset single photo.
+    member do
+      get :like
+      get :report
+      get :reset
+    end
+  end
   resources :cats
   resources :users do
     member do
@@ -14,11 +24,6 @@ Rails.application.routes.draw do
       get :edit_roles
     end
   end
-
-  # for photos
-  get 'photos/:id/like', to: 'photos#like_update', as: 'like_photo'
-  get 'photos/:id/report', to: 'photos#report_update', as: 'report_photo'
-
 
   # get the ban form / update the ban status of a user
   get 'users/:id/ban', to: 'users#ban', as:'ban_user'

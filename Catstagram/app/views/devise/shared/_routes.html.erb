@@ -15,6 +15,12 @@ Photos
 <%= link_to "DELETE", photo_path(val), method: :delete %>.
 
 <br>
+Photos LRR
+<%= link_to "LIKE", like_photo_path(val) %> |
+<%= link_to "REPORT", report_photo_path(val) %> |
+<%= link_to "RESET", reset_photo_path(val) %>
+
+<br>
 Cats
 <% val = 1 %>
 <%= link_to "INDEX GET", cats_path %> |

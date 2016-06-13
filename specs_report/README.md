@@ -130,3 +130,58 @@ As the admin has CRUD rights on everything, they can do everything a user can on
 #### Week 15-16 (06.06 - 19.06.2016)
 
 Oral presentations
+
+## Technical considerations
+
+### Like, Report & Reset Report of PHOTOS
+
+#### Rights management
+
+- Users recieve the `:like_photo` and `:report_photo` rights, onlly on photos that are not theirs. 
+- Admin recieve the `:reset_report_photo` rights, only on photos that are not theirs.
+- These rights are sufficient for the views to display the correct buttons with `if can? :like_photo, @photo`.
+- These rights have to be handled carefully on the **photo controller**, because we want the following behavior: all these `<actions>` are not allowed on own photo but allowed on others (which non-admin user don't manage)
+	- first, `skip_authorize_resource :only => [:like, :report, :reset]` to allow non-managing users to edit the photos
+	- then, at the beginning of each `<action>` method (like, report, reset): `authorize! :<action>_photo, @photo` to allow only users with these rights. However, managing users (typically owner) will still have the right, and we don't want a user to like his own photo.
+	- moreover, it's necessary to discard the request `if current_user == @photo.user` as the owner user cannot perform these actions (but was not discarded by authorization as it is managing the photo!)
+
+A user might still try to like his own picture by entering the direct link `/photos/1/like`. It won't be catched by authorization failure and won't create a 400 error, but will enter in the if branch we just defined and produce the following message.
+
+![img/like_self.png](img/like_self.png)
+
+#### Buttons (on show view)
+
+On the show view of a photo, two buttons allow a user to like or report the photo. 
+
+![img/like.png](img/like.png)
+
+The report asks for confirmation.
+
+![img/report.png](img/report.png)
+
+As soon as a photo is reported, the admin view changes: there is an additionnal button ***"New Reports!"*** in the navigation bar, that redirect to  `/photos/reported`. It displays the same interface as the photos index, but only photos with a `report_count` greater than 0 and ordered by this count, and then by date.
+
+If the photo is reported, an admin has a another option, to reset the `report_count`. It also asks for confirmation. Of course, it may also edit or delete the picture itself, or even go to the user's profile and delete or ban him, as an admin has managing rights.
+
+![img/reset.png](img/reset.png)
+
+#### Visibility (on index and show views)
+The view count is incremented each time anyone loads the page (use refresh to force a new view).
+
+On the index and show views, next to each photo are visible, for every visitor, the number of views (#V), likes (#L) and cats (#C), in the following form:
+
+ #V&#8635; #L&#9829; #C&#128049; 
+ 
+If the user can report the photo and the photo is reported (has a `report_count` #R greater than 0), then it will be:
+
+ #V&#8635; #L&#9829; #C&#128049; #R&#9888; 
+
+Moreover, if the user can manage the photo (it's a connected user owner of the photo or with admin rights), it will see an orange banner "REPORTED". It will be clearly visible that he should take action (edit or delete the photo). 
+
+On the index of photos, it will look like this:
+
+![img/VLCR_index.png](img/VLCR_index.png)
+
+And on the show view of a specific photo, like this (in the footer):
+
+![img/VLCR_show.png](img/VLCR_show.png)

@@ -47,7 +47,12 @@
         <% if user_signed_in? %>
           <!-- Admin NavBar -->
           <% if current_user.is_admin? %>
-            <li class="active"><a href="/"> LOGGED AS ADMIN <span class="sr-only">(current)</span></a></li>
+            <!-- show the warning only if there are reported users -->
+            <% if current_user.has_reported? %>
+              <li>
+                <%= link_to 'NEW REPORTS!', reported_photos_path %>
+              </li>
+            <% end %>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin Actions<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
@@ -61,7 +66,9 @@
                   <%= link_to 'Edit my roles', edit_roles_user_path(current_user) %>
                 </li>
                 <li class="divider"></li>
-                <li><a href="#">TBD: reported photos(0)</a></li>
+                <li>
+                  <%= link_to 'View Reported Photos', reported_photos_path %>
+                </li>
                 <li class="divider"></li>
                 <li><a href="#">TDB: ban users</a></li>
               </ul>

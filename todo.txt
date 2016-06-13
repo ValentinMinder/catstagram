@@ -23,7 +23,7 @@ Iteration #2 - Due 17.05.2016
 -----------------------------
 - account creation : DONE
 - account authentication: DONE
-- Problem: account creation & profile edition is different
+- account creation & profile edition is different : OKAY
 - account permissions:
   - cat DONE
   - user DONE
@@ -67,8 +67,8 @@ Valentin:
 - navigation
 - header with search (DONE, TBD search form)
 - footer (DONE)
-- home page / index (FOR NOW: photos index)
-- admin view (DONE) to view reported photos and take action (TBD)
+- home page / index (photos index = DONE)
+- admin view (DONE) to view reported photos and take action (DONE)
 Eléonore:
 - consistent listing / partial views
 

@@ -36,9 +36,10 @@
     <% end %>
 
     <div class="pull-right">
-      <% if user_signed_in? and (current_user == @photo.user or current_user.is_admin?)%>
+      <!-- Managing buttons (Edit, Delete) -->
+      <% if can? :manage, @photo or can? :test, @photo %>
         <%= link_to "Edit", edit_photo_path(@photo), :class => "btn btn-warning" %>
-        <%= link_to 'Delete', @photo, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+        <%= link_to 'Delete', @photo, method: :delete, data: { confirm: 'Are you sure to delete this photo?' }, :class => "btn btn-danger" %>
       <% end %>
     </div>
   </div>
@@ -49,12 +50,37 @@
     <% end %>
     &nbsp;
     <div class="pull-right">
-      <% if user_signed_in? and current_user != @photo.user %>
-        <%= link_to "Report", report_photo_path(@photo), :class => "btn btn-xs btn-danger" %> &nbsp;
-        <%= link_to "Like", like_photo_path(@photo), :class => "btn btn-xs btn-success" %> &nbsp;
+      <!-- buttons to like, report and reset the reports (if any) -->
+      <% if current_user != @photo.user %> 
+        <% if can? :like_photo, @photo or can? :test, @photo %>
+          <%= link_to "Like", like_photo_path(@photo), :class => "btn btn-xs btn-success" %> &nbsp;
+        <% end %>
+        <% if can? :report_photo, @photo or can? :test, @photo %>
+          <%= link_to "Report", report_photo_path, data: { confirm: 'Are you sure to report this photo?' }, :class => "btn btn-xs btn-danger" %> &nbsp;
+        <% end %>
+        <% if @photo.is_reported? and (can? :reset_report_photo, @photo or can? :test, @photo) %>
+          <%= link_to "Reset reports (" + @photo.report_count.to_s + ")", reset_photo_path(@photo), data: { confirm: 'Are you sure to reset the report count of this photo?' }, :class => "btn btn-xs btn-danger" %> &nbsp;
+        <% end %>
       <% end %>
-      <%= @photo.view_count %> &#664;
-      <%= @photo.like_count %> &#9829;
+      
+      <!-- Show number of views, like, and reports (if any) -->
+      <%= @photo.view_count %> &#8635; <!-- CLOCKWISE OPEN CIRCLE ARROW -->
+      <%= @photo.like_count %> &hearts;
+      <%= @photo.cats.size %> &#128049;
+      <% if @photo.is_reported? %>
+        <% if can? :report_photo, @photo or can? :test, @photo %>
+          <%= @photo.report_count %> &#9888; <!-- WARNING SIGN -->
+        <% end %>
+        <% if can? :manage, @photo or can? :test, @photo %>
+          <span class="label label-warning"> REPORTED </span>
+        <% end %>
+      <%end%>
+      <% if current_user == @photo.user %>
+        <span class="label label-info"> Yours! </span>
+      <% end %>
+      <% if @photo.is_new? %>
+        <span class="label label-success"> new </span>
+      <% end %>
     </div>
   </div>
 </div>

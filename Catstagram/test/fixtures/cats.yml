@@ -1,22 +1,30 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  catname: Mickey
-  description:
-  city: Lausanne
-  birth_time: 2016-05-19
-  user: one
-
-two:
-  catname: Mysterious
-  description: A cat I've seen once
+anonymous:
+  catname: Catnonymous
+  description: A generic anonymous cat
   city: 
   birth_time: 
-  user: 
+  user_id: 1
+
+cat1:
+  catname: Mickey
+  description:
+  city: Lausanne, VD, CH
+  birth_time: 2016-05-19
+  user_id: 3
+
+cat2:
+  catname: ??
+  description: A cat I've seen once
+  city: Switzerland
+  birth_time: 
+  user_id: 
   
-three:
+cat3:
   catname: Houille
-  description: A black cat
-  city: Attalens
+  description: A nice black cat living in the countryside of Switzerland.
+  city: Attalens VD
   birth_time: 2016-06-10
-  user: two
+  user_id: 2
+

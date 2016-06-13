@@ -23,8 +23,9 @@
     <% else %>
       <strong>Ownerless</strong><br>
     <% end %>
-    <strong>Birth date </strong> <%= @cat.birth_time %>
-
+    <% if @cat.birth_time %>
+      <strong>Birth date </strong> <%= @cat.birth_time %>
+    <% end %>
     <%= render 'photos/grid' %>
   </div>
 </div>

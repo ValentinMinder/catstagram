@@ -5,6 +5,8 @@
     </center>
     <%= link_to "by " + @photo.user.username, @photo.user if @photo.user %>
     <br><br>
+    <strong> Uploaded: <%= @photo.created_at %> </strong>
+    <br><br>
     <% unless @photo.caption.blank? %>
       <blockquote>
         <p><%= @photo.caption %></p>
@@ -75,7 +77,7 @@
           <span class="label label-warning"> REPORTED </span>
         <% end %>
       <%end%>
-      <% if current_user == @photo.user %>
+      <% if current_user != nil and current_user == @photo.user %>
         <span class="label label-info"> Yours! </span>
       <% end %>
       <% if @photo.is_new? %>

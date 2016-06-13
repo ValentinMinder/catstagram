@@ -12,7 +12,7 @@
           <div class="col-lg-3">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <%= tag.tag %>
+                #<%= tag.tag %>
                 <div class="pull-right">
                   <%= tag.photos.size %> &#128247; <!-- photos --> 
 
@@ -43,11 +43,13 @@
                 </div>
               </div>
               <div class="panel-body">
-                <% if tag.photos.any? %>
-                  <%= image_tag tag.photos.first.image_url.thumb %>
-                <% else %> 
-                  <strong> No photos yet in <%= tag.tag %> </strong>
-                <% end %>
+                <center>
+                  <% if tag.photos.any? %>
+                    <%= image_tag tag.photos.first.image_url.thumb %>
+                  <% else %> 
+                    <strong> No photos yet in <%= tag.tag %> </strong>
+                  <% end %>
+                </center>
               </div>
             </div>
           </div>

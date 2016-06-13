@@ -1,21 +1,70 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  image_url: MyString
-  caption: a bad reported photo
+bad:
+  id: 6
+  image_url: dog.jpg
+  caption: a bad reported photo, it's not a cat, it's a dog!
   view_count: 13
   like_count: 0
-  report_count: 2
-  user: bad
-  hashtags: three
-  cats: two
+  report_count: 5
+  user_id: 4
+  hashtags: 
+  cats: anonymous
+  created_at: 2015-06-13
+
+one:
+  id: 1
+  image_url: cat1.jpeg
+  caption: A nice cat 
+  view_count: 13
+  like_count: 2
+  report_count: 0
+  user_id: 1
+  hashtags: one, three
+  cats: anonymous
 
 two:
-  image_url: MyString
-  caption: A cat in the wild
+  id: 2
+  image_url: cat2.jpg
+  caption: a nicer cat taken in switzerland
   view_count: 12
-  like_count: 1
+  like_count: 5
   report_count: 0
-  user: two
-  hashtags: one, two, three, four
-  cats: one, three
+  user_id: 3
+  hashtags: two, four, eight
+  cats: cat1
+  created_at: 2016-05-14
+  
+three:
+  id: 3
+  image_url: cat3.jpg
+  caption: a very very nice cat
+  view_count: 12
+  like_count: 3
+  report_count: 0
+  user_id: 2
+  hashtags: one, six
+  cats: cat2
+  created_at: 2016-05-19
+  
+four:
+  id: 4
+  image_url: cat4.jpg
+  caption: even nicer.... miaou
+  view_count: 12
+  like_count: 7
+  report_count: 0
+  user_id: 1
+  hashtags: two, four, six, eight
+  cats: cat3
+  
+five:
+  id: 5
+  image_url: cat5.jpg
+  caption: A bunch of nice cats for Catstagram!
+  view_count: 134
+  like_count: 45
+  report_count: 1
+  user_id: 2
+  hashtags: four, five, six
+  cats: cat1, cat2, cat3

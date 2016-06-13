@@ -1,33 +1,51 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  username: Admin
-  avatar_url: user3.png
-  biography: I am THE admin of Catstagram
+admin:
+  id: 1
+  username: admin
+  avatar_url: user1.png
+  biography: I am THE admin of Catstagram, I'm a cat lover.
   banned_until: 
   email: admin@cat.com
   roles: user, admin
+  encrypted_password: $2a$11$qTLoPw0yaDK.urLEGUDEDew3xrwtsH2GTWLx/FUhQNXg6d7Dx2X/6
 
-two:
+user1:
+  id: 2
   username: paranoodle
   avatar_url: user2.png
-  biography: I am the main user of Catstagram
+  biography: I am the main user of Catstagram, I love nice cats.
   banned_until: 
   email: paranoodle@cat.com
   roles: user
+  encrypted_password: $2a$11$WqwUwcwQPOB.JPtyp31r6e9r1Hj7ZhxLoZ.3gzMfOTtQdZzKqwdpy
   
-three:
+user2:
+  id: 3
   username: val
-  avatar_url: user1.png
-  biography: 
+  avatar_url: user3.png
+  biography: I like cats but I prefer dogs (don't tell paranoodle!)
   banned_until: 
   email: val@cat.com
   roles: user
+  encrypted_password: $2a$11$nAV1/tDeA95pkb70udN8u.7wqzgUxPfOXFGUyBjGVqvaZ/HfjrDKO
   
-four:
+bad:
+  id: 4
   username: bad
   avatar_url: user4.png
   biography: I am a bad guy and I'm banned...
   banned_until: 2016-07-11
   email: bad@cat.com
   roles: user
+  encrypted_password: $2a$11$AA.GvO2ZOREJPllD.N2MiO0zs4aaza7vRf4/8vhH7os/wZBhFi5PS
+  
+dev:
+  id: 5
+  username: dev
+  avatar_url: user5.png
+  biography: I test the website
+  banned_until: 
+  email: dev@cat.com
+  roles: user, tester
+  encrypted_password: $2a$11$y2URbsMbV0ZqBvQSYgOZged9Efv3yjzsmzPuGFueVNaNEYVThwnyy

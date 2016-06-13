@@ -10,20 +10,24 @@ class PhotosController < ApplicationController
   #======================================================================
   ## WARNING - LIKE & REPORT & RESET ARE OPEN TO ALL USER WITH THESE RIGHTS!
   ## DO NOT TRUST USER INPUT / DO NOT MODIFY OTHER THINGS IN THE PHOTO.
-  # Moreover, its impossible to restrict a user to like/report/reser it own photo with cancancan 
+  # Moreover, its impossible to restrict a user to like/report/reser it own photo with cancancan
   # (as the owner has full rights over the photo...) but we do it programmatically in the reply!
   def like
     authorize! :like_photo, @photo
 
-
-    respond_to do |format|
-      if current_user == @photo.user
-        format.html {redirect_to @photo, notice: "You can't like your own photo, you narcissistic self-obsessed user!"}
-      else 
-        @photo.increment!(:like_count, 1)
-        format.html {redirect_to @photo, notice: "Thank you for the like <3"}
-      end
+    if current_user != @photo.user
+      @photo.increment!(:like_count, 1)
+      render 'update_likes.js'
     end
+
+    # respond_to do |format|
+    #   if current_user == @photo.user
+    #     format.html {redirect_to @photo, notice: "You can't like your own photo, you narcissistic self-obsessed user!"}
+    #   else
+    #     @photo.increment!(:like_count, 1)
+    #     format.html {redirect_to @photo, notice: "Thank you for the like <3"}
+    #   end
+    # end
   end
 
   def report
@@ -31,7 +35,7 @@ class PhotosController < ApplicationController
     respond_to do |format|
       if current_user == @photo.user
         format.html {redirect_to @photo, alert: "Cannot report your own photo, unfortunately."}
-      else 
+      else
         @photo.increment!(:report_count, 1)
         format.html {redirect_to @photo, notice: "Report sent"}
       end
@@ -43,7 +47,7 @@ class PhotosController < ApplicationController
     respond_to do |format|
       if current_user == @photo.user
         format.html {redirect_to @photo, alert: "Cannot reset report on your own picture..."}
-      else 
+      else
         @photo.update_attribute(:report_count, 0)
         format.html {redirect_to @photo, notice: "Report value reset"}
       end

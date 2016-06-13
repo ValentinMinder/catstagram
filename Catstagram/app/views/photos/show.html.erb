@@ -51,8 +51,10 @@
     &nbsp;
     <div class="pull-right">
       <!-- buttons to like, report and reset the reports (if any) -->
-      <% if current_user != @photo.user %> 
+      <% if current_user != @photo.user %>
         <% if can? :like_photo, @photo or can? :test, @photo %>
+          <%= link_to 'Like', like_photo_path(@photo), id: "like", class: "btn btn-xs btn-success", remote: true %> &nbsp;
+
           <%= link_to "Like", like_photo_path(@photo), :class => "btn btn-xs btn-success" %> &nbsp;
         <% end %>
         <% if can? :report_photo, @photo or can? :test, @photo %>
@@ -62,10 +64,10 @@
           <%= link_to "Reset reports (" + @photo.report_count.to_s + ")", reset_photo_path(@photo), data: { confirm: 'Are you sure to reset the report count of this photo?' }, :class => "btn btn-xs btn-danger" %> &nbsp;
         <% end %>
       <% end %>
-      
+
       <!-- Show number of views, like, and reports (if any) -->
       <%= @photo.view_count %> &#8635; <!-- CLOCKWISE OPEN CIRCLE ARROW -->
-      <%= @photo.like_count %> &hearts;
+      <span id="like_count"><%= @photo.like_count %></span> &hearts;
       <%= @photo.cats.size %> &#128049;
       <% if @photo.is_reported? %>
         <% if can? :report_photo, @photo or can? :test, @photo %>

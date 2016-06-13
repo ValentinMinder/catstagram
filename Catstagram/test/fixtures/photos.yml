@@ -2,14 +2,20 @@
 
 one:
   image_url: MyString
-  caption: MyText
-  view_count: 1
-  like_count: 1
-  report_count: 1
+  caption: a bad reported photo
+  view_count: 13
+  like_count: 0
+  report_count: 2
+  user: bad
+  hashtags: three
+  cats: two
 
 two:
   image_url: MyString
-  caption: MyText
-  view_count: 1
+  caption: A cat in the wild
+  view_count: 12
   like_count: 1
-  report_count: 1
+  report_count: 0
+  user: two
+  hashtags: one, two, three, four
+  cats: one, three

@@ -1,7 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  tag: MyString
+  tag: cat
 
 two:
-  tag: MyString
+  tag: summer
+  
+three:
+  tag: switzerland
+  
+four:
+  tag: sunny

@@ -1,13 +1,33 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  username: MyString
-  avatar_url: MyString
-  biography: MyText
-  banned_until: 2016-04-19
+  username: Admin
+  avatar_url: user3.png
+  biography: I am THE admin of Catstagram
+  banned_until: 
+  email: admin@cat.com
+  roles: user, admin
 
 two:
-  username: MyString
-  avatar_url: MyString
-  biography: MyText
-  banned_until: 2016-04-19
+  username: paranoodle
+  avatar_url: user2.png
+  biography: I am the main user of Catstagram
+  banned_until: 
+  email: paranoodle@cat.com
+  roles: user
+  
+three:
+  username: val
+  avatar_url: user1.png
+  biography: 
+  banned_until: 
+  email: val@cat.com
+  roles: user
+  
+four:
+  username: bad
+  avatar_url: user4.png
+  biography: I am a bad guy and I'm banned...
+  banned_until: 2016-07-11
+  email: bad@cat.com
+  roles: user

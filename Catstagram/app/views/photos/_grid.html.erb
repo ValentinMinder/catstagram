@@ -26,7 +26,7 @@
                     <span class="label label-warning"> REPORTED </span>
                   <% end %>
                 <%end%>
-                <% if current_user == photo.user %>
+                <% if current_user != nil and current_user == photo.user %>
                     <span class="label label-info"> Yours! </span>
                 <% end %>
                 <% if photo.is_new? %>

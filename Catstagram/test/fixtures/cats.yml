@@ -1,13 +1,22 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  catname: MyString
-  description: MyText
-  city: MyString
-  birth_time: 2016-04-19
+  catname: Mickey
+  description:
+  city: Lausanne
+  birth_time: 2016-05-19
+  user: one
 
 two:
-  catname: MyString
-  description: MyText
-  city: MyString
-  birth_time: 2016-04-19
+  catname: Mysterious
+  description: A cat I've seen once
+  city: 
+  birth_time: 
+  user: 
+  
+three:
+  catname: Houille
+  description: A black cat
+  city: Attalens
+  birth_time: 2016-06-10
+  user: two

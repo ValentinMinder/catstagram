@@ -2,7 +2,7 @@ class PhotosController < ApplicationController
   before_action :set_photo, only: [:show, :edit, :update, :destroy, :like_update, :report_update]
 
   # Load authorization ressources for everything.
-  load_and_authorize_resource :except => [:index_main]
+  load_and_authorize_resource :except => [:index_main, :search]
 
   # Like & report authorization are manually handled! BE CARFEFUL!
   skip_authorize_resource :only => [:like, :report, :reset]

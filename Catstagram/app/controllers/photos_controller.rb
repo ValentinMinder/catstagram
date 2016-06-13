@@ -75,6 +75,7 @@ class PhotosController < ApplicationController
 
   def index_main
     # most recent picture first!
+    @title_main = "Welcome on Catstagram !"
     @title = "Latest Photos"
     @photos = Photo.all.order(created_at: :desc).limit(8)
     @hashtags = Hashtag.all.order(created_at: :desc).limit(4)
@@ -84,6 +85,28 @@ class PhotosController < ApplicationController
     @title_tag = "Latest Hashtags"
     @title_cat = "Latest Cats"
     render 'layouts/index'
+  end
+
+  def search
+    # extract param & check its not nul or empty.
+    tk = params[:criteria]
+    if (tk == nil or tk == '') 
+      redirect_to photos_path
+    else
+      token_like = "%" + tk + "%"
+      @title_main = "Search result for '" + tk + "'"
+      
+      @title = "Latest Photos"
+      # most recent first!
+      @photos = Photo.where("caption LIKE :token" , {token: token_like }).order(created_at: :desc)
+      @hashtags = Hashtag.where("tag LIKE :token" , {token: token_like }).order(created_at: :desc)
+      @users = User.where("username LIKE :token OR biography LIKE :token" , {token: token_like }).order(created_at: :desc)
+      @cats = Cat.where("catname LIKE :token OR description LIKE :token OR city LIKE :token" , {token: token_like}).order(created_at: :desc)
+      @title_user = "Latest Users"
+      @title_tag = "Latest Hashtags"
+      @title_cat = "Latest Cats"
+      render 'layouts/index'
+    end
   end
 
   # GET /photos/1

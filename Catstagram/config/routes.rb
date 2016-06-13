@@ -45,6 +45,9 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   # destination of / and index_path
   root to: 'photos#index_main', as: 'index'
+  # search with a single criteria => specialized index!
+  get '/search/', to: 'photos#search', as: 'search_query'
+  get '/search/:criteria', to: 'photos#search', as: 'search_url'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

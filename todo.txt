@@ -1,9 +1,9 @@
 Iteration #1 - Due 03.05.2016
 -----------------------------
 - creation/edition forms for (including relations):
-  - cat (DONE - need to edit when user logins are implemented)
+  - cat (DONE - need to edit when user logins are implemented DONE)
   - user DONE
-  - photo (DONE - need to edit when user logins are implemented)
+  - photo (DONE - need to edit when user logins are implemented DONE)
 - simple index display for:
   - cat (DONE)
   - user DONE
@@ -15,8 +15,8 @@ Iteration #1 - Due 03.05.2016
   - photo (DONE)
   - hashtag DONE
 - automatic hashtag creation (from specific text box) (DONE)
-- catnonymous
-- implement like/report count
+- catnonymous DONE
+- implement like/report count DONE
 - implement view count (DONE)
 
 Iteration #2 - Due 17.05.2016
@@ -47,7 +47,7 @@ Iteration #3 - Due 07.06.2016
   - user
     - index (DONE)
     - show (DONE)
-    - form (new/edit) (mostly DONE - need to setup avatar upload?)
+    - form (new/edit) (mostly DONE - need to setup avatar upload DONE)
     - ban form (DONE)
   - photo
     - index (DONE)
@@ -58,14 +58,14 @@ Iteration #3 - Due 07.06.2016
     - index (DONE)
     - show (DONE)
 
-  - main landing page
-  - search page?
+  - main landing page DONE
+  - search page DONE
 - finish report
 - prepare presentation
 
 Valentin:
-- navigation
-- header with search (DONE, TBD search form)
+- navigation DONE
+- header with search (DONE, search form DONE)
 - footer (DONE)
 - home page / index (index of everything: DONE)
 - admin view (DONE) to view reported photos and take action (DONE)
@@ -73,9 +73,4 @@ Valentin:
 - avatar upload: DONE
 - use the same reusable layout everywhere for preview: DONE
 Eléonore:
-- consistent listing / partial views
-
-
-KNWON ISSUES:
-=============
-- j'arrive pas a ban (toujours firefox?)
+- consistent listing / partial views DONE

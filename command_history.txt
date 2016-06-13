@@ -25,3 +25,6 @@ rails generate migration RolesUsers
 
 # cancan
 rails g cancan:ability
+
+#to populate the db with some fixtures
+rake db:fixtures:load

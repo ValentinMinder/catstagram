@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   # custom overriden controller allows to insert custum field at registration
   # source: http://jacopretorius.net/2014/03/adding-custom-fields-to-your-devise-user-model-in-rails-4.html
   devise_for :users, :controllers => { registrations: 'registrations' }
-  resources :hashtags
+  resources :hashtags do
+    collection do
+      get :index_admin
+    end
+  end
   resources :photos do
     # for admin to see reported photos
     collection do

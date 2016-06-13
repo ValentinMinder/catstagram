@@ -37,16 +37,13 @@ class UsersController < ApplicationController
   # same as index but only banned users.
   def banned
     authorize! :change_banned, @current_user
-    respond_to do |format|
-      if !current_user.is_admin?
-        format.html {redirect_to users_path, alert: "You can't see banned people."}
-      else 
-        @users = User.all.select{ |u| u.is_banned }
-        @title = "Banned Users"
-        render 'index'
-      end
+    if !current_user.is_admin?
+      format.html {redirect_to users_path, alert: "You can't see banned people."}
+    else 
+      @users = User.all.select{ |u| u.is_banned }
+      @title_user = "Banned Users"
+      render 'index'
     end
-    
   end
 
 

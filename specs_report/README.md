@@ -131,6 +131,43 @@ As the admin has CRUD rights on everything, they can do everything a user can on
 
 Oral presentations
 
+## Usage
+
+### Launch
+
+The project is production-ready. It is necessary to set up `mysql` with a database `catstagram` first, and to check database connection settings in `config/database.yml`, and then type:
+
+```
+rails s
+```
+
+The server is now running and reachable at `server:port`, namely [localhost:3000](localhost:3000) if you run it on your own machine with default settings.
+
+### Fixtures
+
+The project is furnished with fixtures that will populate the database with a few examples, create the necessary roles to see the website in action, and set up an admin account. To load the fixtures type:
+
+```
+rake db:fixtures:load
+```
+
+
+You may login as an admin with the following account:
+
+```
+email: admin@cat.com
+login: admin1
+```
+
+The other accounts are simple users, all with `login:user12`:
+
+```
+paranoodle@cat.com (regular user)
+val@cat.com (regular user)
+bad@cat.com (banned users)
+dev@cat.com (tester)
+```
+
 ## Technical considerations
 
 ### Like, Report & Reset Report of PHOTOS

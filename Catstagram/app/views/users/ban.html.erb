@@ -20,6 +20,14 @@
   <div class="well bs-component">
     <fieldset>
       <div class="form-group">
+        <div class="col-lg-12">
+          <p>
+            Enter the date until which the user must be banned (format: YYYY-MM-DD or DD/MM/YYYY). Dates before the current date or empty value will unban the user.
+          </p>
+        </br>
+        </div>
+      </div>
+      <div class="form-group">
         <%= f.label "Ban until", :class=> "col-lg-2 control-label" %>
         <div class="col-lg-10">
           <%= date_field(:user, :banned_until) %><br><br>

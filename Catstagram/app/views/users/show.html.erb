@@ -3,7 +3,13 @@
     <div class="pull-right">
       <br>
       <% if user_signed_in? and current_user.is_admin? %>
-        <%= link_to 'Ban', ban_user_path(@user), :class => "btn btn-danger" %>
+        <% 
+        text = "Ban"
+        if @user.is_banned
+          text = "Unban"
+        end
+        %>
+        <%= link_to text, ban_user_path(@user), :class => "btn btn-danger" %>
         <%= link_to 'Edit Roles', edit_roles_user_path(@user), :class => "btn btn-info" %>
       <% end %>
       <% if user_signed_in? and (current_user == @user or current_user.is_admin?)%>

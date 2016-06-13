@@ -54,8 +54,6 @@
       <% if current_user != @photo.user %>
         <% if can? :like_photo, @photo or can? :test, @photo %>
           <%= link_to 'Like', like_photo_path(@photo), id: "like", class: "btn btn-xs btn-success", remote: true %> &nbsp;
-
-          <%= link_to "Like", like_photo_path(@photo), :class => "btn btn-xs btn-success" %> &nbsp;
         <% end %>
         <% if can? :report_photo, @photo or can? :test, @photo %>
           <%= link_to "Report", report_photo_path, data: { confirm: 'Are you sure to report this photo?' }, :class => "btn btn-xs btn-danger" %> &nbsp;

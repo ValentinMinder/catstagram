@@ -11,24 +11,25 @@ Authors:
 
 ## Installation
 
-### Prerequesites
+You need `ruby`, `rails`, `mysql` and `imagemagick`.
 
-You need on your system
+It is necessary to set up `mysql` with a database `catstagram` first, and to check database connection settings in `config/database.yml`.
 
-- `ruby` (tested with 2.2.3p173)
-- `rails` (tested with 4.2.5.1)
-- `mysql`
-- `imagemagick`. It comes by default on most linux distribution, otherwise use your favorite packet manager ton get it, like un Linux `sudo apt-get install imagemagick` or on MacOS X `brew install imagemagick`
+To launch, simply type: 
 
-### Configuration
+```
+rails s
+```
 
-- Create a table named `Catstagram` in your mysql editor.
-- Run mysql
-- Move to the project directory: `cd Catstagram`
-- Update the database config (host, user, password) of the file `Catstagram/config/database.yml` using your favorite editor (`nano`, `vim`, etc)
-- Run the following command to install & update bundles: `bundle install; bundle update`
-- Run the server: `rails s`
+To populate the database with some example data, type:
 
-## Provisional Report
+```
+rake db:fixtures:load
+```
+
+If you need more details, check [here](specs_report#Installation Indications)
+
+
+## Final Report
 
 Available [here](specs_report)

@@ -147,7 +147,12 @@
     <%= render "devise/shared/routes" %>
   <% end %>
 
-  <%= yield %>
+  <!-- banned users are blocked for the whole website, may only disconnect -->
+  <% if user_signed_in? && current_user.is_banned %>
+    <%= render 'layouts/banned' %>
+  <% else %>
+    <%= yield %>
+  <% end %>
 
 </div>
 <br>

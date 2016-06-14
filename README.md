@@ -27,7 +27,7 @@ To populate the database with some example data, type:
 rake db:fixtures:load
 ```
 
-If you need more details, check [here](specs_report#Installation Indications)
+If you need more details, check [here](specs_report#installation-indications)
 
 
 ## Final Report

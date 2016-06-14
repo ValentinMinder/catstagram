@@ -2,31 +2,31 @@
 Simple Cat version of Instagram in Ruby on Rails - for Webrails class at HEIG-VD.
 
 **This is the final report. If you're not into reading documentation and prefer to test yourself, go directly to
-[Installation Indications](#Installation Indications)**
+[Installation Indications](#installation-indications)**
 
 ## Table of Contents
 
-- [Introduction](#Introduction)
-- [Specifications](#Specifications)
-	- [General Description](#General Description)
-	- [Usecases](#Usecases)
-	- [Database schema](#Database schema)
-	- [Permissions and Rights](#Permissions and Rights)
-- [Software Structure](#Software Structure)
-- [Technical considerations](#Technical considerations)
-	- [AJAX in practice](#AJAX in practice)
-	- [Librairies used](#Librairies used)
-	- [Like, Report & Reset Report of PHOTOS](#Like, Report & Reset Report of PHOTOS)
-	- [Banning Users](#Banning Users)
-	- [Layouts and partial views](#Layouts and partial views)
-- [Project Management](#Project Management)
-- [Project State](#Project State)
-	- [Initial Iterations plan](#Initial Iterations plan)
-	- [Actual Management](#Actual Management)
-- [Conclusion](#Conclusion)
-- [Annexes](#Annexes)
-	- [Installation Indications](#Installation Indications)
-	- [Usage Manual](#Usage Manual)
+- [Introduction](#introduction)
+- [Specifications](#specifications)
+	- [General Description](#general-description)
+	- [Usecases](#usecases)
+	- [Database schema](#database-schema)
+	- [Permissions and Rights](#permissions-and-rights)
+- [Software Structure](#software-structure)
+- [Technical considerations](#technical-considerations)
+	- [AJAX in practice](#ajax-in-practice)
+	- [Librairies used](#librairies-used)
+	- [Like, Report & Reset Report of PHOTOS](#like-report--reset-report-of-photos)
+	- [Banning Users](#banning-users)
+	- [Layouts and partial views](#layouts-and-partial-views)
+- [Project Management](#project-management)
+- [Project State](#project-state)
+	- [Initial Iterations plan](#initial-iterations-plan)
+	- [Actual Management](#actual-management)
+- [Conclusion](#conclusion)
+- [Annexes](#annexes)
+	- [Installation Indications](#installation-indications)
+	- [Usage Manual](#usage-manual)
 
 ## Introduction
 

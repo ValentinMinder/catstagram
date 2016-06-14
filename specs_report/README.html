@@ -1,0 +1,1136 @@
+<!DOCTYPE html><html>
+
+<head>
+<meta charset="utf-8">
+<title>README</title>
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+</head>
+<body>
+<h1 id="toc_0">Catstagram - Final Report</h1>
+
+<p>Simple Cat version of Instagram in Ruby on Rails - for Webrails class at HEIG-VD.</p>
+
+<p><strong>This is the final report. If you&#39;re not into reading documentation and prefer to test yourself, go directly to
+<a href="#installation-indications">Installation Indications</a></strong></p>
+
+<h2 id="toc_1">Table of Contents</h2>
+
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#specifications">Specifications</a>
+
+<ul>
+<li><a href="#general-description">General Description</a></li>
+<li><a href="#usecases">Usecases</a></li>
+<li><a href="#database-schema">Database schema</a></li>
+<li><a href="#permissions-and-rights">Permissions and Rights</a></li>
+</ul></li>
+<li><a href="#software-structure">Software Structure</a></li>
+<li><a href="#technical-considerations">Technical considerations</a>
+
+<ul>
+<li><a href="#ajax-in-practice">AJAX in practice</a></li>
+<li><a href="#librairies-used">Librairies used</a></li>
+<li><a href="#like-report--reset-report-of-photos">Like, Report &amp; Reset Report of PHOTOS</a></li>
+<li><a href="#banning-users">Banning Users</a></li>
+<li><a href="#layouts-and-partial-views">Layouts and partial views</a></li>
+</ul></li>
+<li><a href="#project-management">Project Management</a></li>
+<li><a href="#project-state">Project State</a>
+
+<ul>
+<li><a href="#initial-iterations-plan">Initial Iterations plan</a></li>
+<li><a href="#actual-management">Actual Management</a></li>
+</ul></li>
+<li><a href="#conclusion">Conclusion</a></li>
+<li><a href="#annexes">Annexes</a>
+
+<ul>
+<li><a href="#installation-indications">Installation Indications</a></li>
+<li><a href="#usage-manual">Usage Manual</a></li>
+</ul></li>
+</ul>
+
+<h2 id="toc_2">Introduction</h2>
+
+<p>This is a Ruby on Rails project for WebRails class at <a href="http://heig-vd.ch/international">HEIG-VD, Yverdon-les-Bains</a>, Switzerland, done by <a href="http://github.com/paranoodle">Eleonore d&#39;Agostino</a> and <a href="http://github.com/ValentinMinder">Valentin Minder</a> in Spring 2016.</p>
+
+<p>This report will go through the planned specifications and management and check against the final project to check for consistency and project success. At the end you&#39;ll find a documentation how to install and use the website.</p>
+
+<h2 id="toc_3">Specifications</h2>
+
+<h6 id="toc_4">(<em>Cahier des charges)</em></h6>
+
+<h3 id="toc_5">General Description</h3>
+
+<h6 id="toc_6"><em>Type site, Objectives</em></h6>
+
+<p>Catstagram is a simple version of Instagram for photos of cats only. It allows registered users to upload photos of cats, tag them and share them with all their friends, because sharing is caring ;3 </p>
+
+<p>The more you share, the more views you get! :D</p>
+
+<p>Guests can see photos of specific cats or uploaded by specific users! And cats by categories, of course!</p>
+
+<p>Be cautious, if you upload anything other than a cat photo and you get reported too many times, the admins might ban you!</p>
+
+<h3 id="toc_7">Usecases</h3>
+
+<h6 id="toc_8">(<em>Cas d&#39;utilisation</em>)</h6>
+
+<p>See the following image:</p>
+
+<p><img src="schema/use_case_catstagram.png" alt="schema/use_case_catstagram.png"></p>
+
+<p>A guest is a non-registered or non-logged visitor of the website. They are limited to VIEW capacities on everything, and have no right to EDIT. A guest may:</p>
+
+<ul>
+<li>view user and cat profile details</li>
+<li>search and view photos by hashtag, user or cat</li>
+<li>view photos (direct link to single photo), increasing the view count of the photo</li>
+<li>create an account with <em>sign-up</em>, or login with <em>sign-in</em></li>
+</ul>
+
+<p>A user is a registered and logged visitor of the website who doesn&#39;t have admin rights. A user has VIEW capabilites on everything, and EDIT capabilites on their own data. A user may:</p>
+
+<ul>
+<li>do everything a guest can</li>
+<li>edit their own user profile</li>
+<li>upload or edit photos on their own account. Uploading a photo includes optionally tagging cats and categories (hashtags). This includes creating new hashtags (categories), when those available do not suffice. Of course, they can upload photos of cats that don&#39;t belong to them.</li>
+<li>create or update cat profiles (of their own cats only)</li>
+<li>report bad photos, like those with dogs, increasing the report count of the photo</li>
+<li>like photos, increasing the like count of the photo</li>
+</ul>
+
+<p>An admin is a registered and logged visitor of the website that has admin rights. An admin has the right to VIEW and EDIT on everything. An admin may:</p>
+
+<ul>
+<li>do everything a user can</li>
+<li>view the report count of a photo, receive some kind of alerts of new reports, and reset report counts</li>
+<li>decide what to do with reported photos, including:
+
+<ul>
+<li>remove reported photos</li>
+<li>ban related user</li>
+<li>remove related user (with all its photos)</li>
+</ul></li>
+<li>edit everything (CRUD actions), including the edition of any field/relation that doesn&#39;t have a special meaning (see &quot;About Rights&quot; section). It may also include ban users, when they were reported for bad behaviors (eg per email).</li>
+</ul>
+
+<p>Note that views, likes and reports counts are not related to users. View counts reflects the number of times a photo was opened in a browser, even if it was done 10x by the same person. The same goes with like and reports, but those are only available for logged users. This system is open to abuse but it allows for a simpler system, otherwise it would require a lot more relations and be more complex. </p>
+
+<h3 id="toc_9">Database schema</h3>
+
+<p>Their is the conceptual schema:</p>
+
+<p><img src="schema/db_schema_catstagram.png" alt="schema/db_schema_catstagram.png"></p>
+
+<p>The relational schema is obvious from the conceptual one, or see the <code>schema.yml</code> file.</p>
+
+<p>A user is a registered human visitor that may have some role (and admin rights). Fields generated by Devise for account creation and authentication are not shown (such as login/password), as well as fields handled by Ruby by default (such as created_at). Users own cats and upload photos (therefore cats belongs to their user owner, and photos are uploaded by users).</p>
+
+<p>Cats are tagged on photos, and at least one cat must be tagged on every photo. If the cat is unknown, a special entity called the &quot;Chanonyme&quot; (Catnonymous) is tagged instead. If the cat becomes known, the owner of the photo or the admin may change the tag.</p>
+
+<p>Cats may not have an owner. In that case, they are only editable by admins, and admin may assign them an owner. Such &quot;non-owned cat&quot; may be merged into an owned cat by the admin (the non-owned cat profile is destroyed and all its tag on photos are forwarded to the owned cat).</p>
+
+<p>Hashtags are similar to categories, where any photo may belong to any number of hashtags (from 0 to N).</p>
+
+<h3 id="toc_10">Permissions and Rights</h3>
+
+<p>The following fields are set once and forever, and cannot be edited, even by an admin:</p>
+
+<ul>
+<li>id</li>
+<li>created_at</li>
+<li>updated_at</li>
+</ul>
+
+<p>All the counts fields cannot be edited, even by an admin. They are set to 0 by default and incremented automatically when the related actions are performed. However, admins may reset the report count to 0 when handling reports. </p>
+
+<p>Admins may set the banned_until field to ban a user (otherwise this field is left blank). Users cannot connect until the end of the ban period.</p>
+
+<p>In all entities, there is at least one field that is mandatory. All the others are optional (or they have special meaning, explained before)</p>
+
+<ul>
+<li>username</li>
+<li>title</li>
+<li>catname</li>
+<li>image_url</li>
+<li>tag</li>
+</ul>
+
+<p>Users may add/edit/remove all <strong>other</strong> data:</p>
+
+<ul>
+<li>in their profile (username, avatar_url, biography)</li>
+<li>in their cats&#39; profile (catname, city, description, birth_time)</li>
+<li>in a photo they uploaded (caption, cats tagged, hashtags tagged). They cannot change the image URL though. If a user wishes to change photos, they have to delete the current one and upload a new one, as likes/hashtags/cats tagged may not be relevant to the new photo.</li>
+</ul>
+
+<p>Users may remove a photo they uploaded, a profile of a cat they own, or even their whole profile (deleting a user will delete all uploaded photos, but cats will remain, without an owner).</p>
+
+<p>As the admin has CRUD rights on everything, they can do everything a user can on all users&#39; data. Moreover, they have special CRUD rights (in that sense, edit means all CRUD actions)</p>
+
+<ul>
+<li>They can set the <code>banned_until</code> field and reset the <code>report_count</code> field</li>
+<li>A cat without an owner is only editable by an admin</li>
+<li>They may assign cats to an owner, or remove ownership</li>
+<li>They may assign roles</li>
+<li>They may edit hashtags</li>
+</ul>
+
+<h2 id="toc_11">Software structure</h2>
+
+<h6 id="toc_12">(<em>Structure du logiciel</em>)</h6>
+
+<p>We use Rails&#39; standard MVC structure, with Models in <code>app/models</code>, Views as webpages in <code>app/views</code> and Controllers in <code>app/controllers</code>.</p>
+
+<h3 id="toc_13">Guest actions:</h3>
+
+<ul>
+<li>View the main page - <code>photos_controller#index_main</code></li>
+<li>View all users - <code>users_controller#index</code></li>
+<li>View user profiles - <code>users_controller#show</code></li>
+<li>View all cats - <code>cats_controller#index</code></li>
+<li>View cat profiles - <code>cats_controller#show</code></li>
+<li>View all hashtags - <code>hashtags_controller#index</code></li>
+<li>View all photos - <code>photos_controller#index</code></li>
+<li>View photos by hashtag -  <code>hashtags_controller#show</code></li>
+<li>View photos by user - <code>users_controller#show</code></li>
+<li>View photos by cat - <code>cats_controller#show</code></li>
+<li>View photo via direct link (increments view count) <code>photos_controller#show</code></li>
+<li>Search photos - <code>photos_controller#search</code></li>
+<li>Create an account and update an account (<em>sign up</em>) - default <code>Devise::RegistrationsController</code> and <code>registrations_controller</code> (for custom values of forms)</li>
+<li>Log in to/log out from an existing account (<em>sign in</em>) - default <code>Devise::SessionController</code></li>
+<li><code>users_controller#new</code> and <code>users_controller#create</code> are removed, because there are handled by devise sign-up.</li>
+<li>Get a 403 Unauthorized Error when accessing a forbidden page <code>application_controller.rb</code> for <code>rescue_from CanCan::AccessDenied</code></li>
+</ul>
+
+<h3 id="toc_14">User Actions</h3>
+
+<ul>
+<li>Edit their own profile - <code>users_controller#edit</code></li>
+<li>Upload photos - <code>photos_controller#new</code></li>
+<li>Edit their own photos - <code>photos_controller#edit</code></li>
+<li>Delete their own photos - <code>photos_controller#destroy</code></li>
+<li>Create a new cat profile - <code>cats_controller#new</code></li>
+<li>Edit their own cat profiles - <code>cats_controller#edit</code></li>
+<li>Delete their own cat profiles - <code>cats_controller#destroy</code></li>
+<li>Delete their own profile - <code>users_controller#destroy</code></li>
+<li>Report bad photos - <code>photos_controller#report</code></li>
+<li>View the report count of a photo - <code>photos_controller#show</code></li>
+<li>Like photos - <code>photos_controller#like</code></li>
+</ul>
+
+<h3 id="toc_15">Admin Actions</h3>
+
+<ul>
+<li>Receive alerts of new reports - no controllers involved, just an alert &amp; number in the navigation bar</li>
+<li>View new reports - <code>photos_controller#reported</code></li>
+<li>Reset report counts - <code>photos_controller#reset</code></li>
+<li>Remove reported photos - <code>photos_controller#destroy</code></li>
+<li>Ban (and unban) user - <code>users_controller#ban</code> and <code>users_controller#ban_update</code></li>
+<li>View banned users - <code>users_controller#banned</code></li>
+<li>Remove user - <code>users_controller#destroy</code></li>
+<li>Create empty new hashtag - <code>hashtags_controller#new</code></li>
+<li>View editable list of all hashtags - <code>hashtags_controller#index_admin</code></li>
+<li>Edit everything - <code>[NAME]s_controller#edit</code> and <code>users_controller#edit_roles</code> and <code>users_controller#save_roles</code></li>
+<li>Destroy everything - <code>[NAME]s_controller#destroy</code></li>
+</ul>
+
+<h2 id="toc_16">Technical considerations</h2>
+
+<h6 id="toc_17">(<em>Implémentation</em>)</h6>
+
+<h3 id="toc_18">AJAX in practice</h3>
+
+<p>While our original plan was to allow optional tag auto-completion during photo upload, this proved to be beyond our skills even after extensive reading on the subject. It was already hard enough implementing dynamic text fields (pressing the &quot;Add Tag&quot; button adds a new text field whose content <em>will</em> be correctly saved), but we couldn&#39;t find how to work an optional drop-down in without using a <code>collection_select</code>, which... we can&#39;t type in.</p>
+
+<p>So we went with our second idea.</p>
+
+<p>The final AJAX we use allows us to <em>like</em> photos without reloading the page, and updates the like count on the photo accordingly, after which the <em>like</em> button disappears.</p>
+
+<p>This is done via three files:</p>
+
+<ul>
+<li>In <code>app/views/photos/show.html.erb</code>, we set up the like button <code>link_to</code> with the option <code>remote: true</code>, along with a specific id so we can refer back to it. We also give an id to a span containing the <code>@photo.like_count</code> value.</li>
+<li>In <code>app/controllers/photos_controller.rb</code>, in the <code>like</code> function, we render the <code>update_likes.js</code> file after we finish the checks and modifications we wanted.</li>
+<li>In <code>app/views/photos/update_likes.js</code>, we have simple jQuery commands to hide the like button via its id, and replace the old <code>like_count</code> in the span with the new <code>like_count</code> value we computed in the controller.</li>
+</ul>
+
+<h3 id="toc_19">Librairies used</h3>
+
+<p>The only major library we used was ImageMagick, for the purpose of automatically resizing images to create thumbnails. While we could have just used HTML tags to keep only one copy of each image and display, this requires downloading all the images at full size and slows down the page loading considerably, especially for users with poor connections.</p>
+
+<p>As is, when an image is uploaded, we automatically save a resized copy of it for use as thumbnails. This is done in the <code>app/uploaders/image_uploader.rb</code> file:</p>
+
+<div><pre><code class="language-none">version :thumb do
+  process :resize_to_fit =&gt; [100, 100]
+end
+ ```
+ 
+This saves a thumbnail of the image. If our image URL is accessible at `photo.image_url`, the thumbnail URL is accessible at `photo.image_url.thumb.url`.
+
+### Like, Report &amp; Reset Report of PHOTOS
+
+#### Rights management
+
+- Users recieve the `:like_photo` and `:report_photo` rights, onlly on photos that are not theirs. 
+- Admin recieve the `:reset_report_photo` rights, only on photos that are not theirs.
+- These rights are sufficient for the views to display the correct buttons with `if can? :like_photo, @photo`.
+- These rights have to be handled carefully on the **photo controller**, because we want the following behavior: all these `&lt;actions&gt;` are not allowed on own photo but allowed on others (which non-admin user don&#39;t manage)
+    - first, `skip_authorize_resource :only =&gt; [:like, :report, :reset]` to allow non-managing users to edit the photos
+    - then, at the beginning of each `&lt;action&gt;` method (like, report, reset): `authorize! :&lt;action&gt;_photo, @photo` to allow only users with these rights. However, managing users (typically owner) will still have the right, and we don&#39;t want a user to like his own photo.
+    - moreover, it&#39;s necessary to discard the request `if current_user == @photo.user` as the owner user cannot perform these actions (but was not discarded by authorization as it is managing the photo!)
+
+A user might still try to like his own picture by entering the direct link `/photos/1/like`. It won&#39;t be catched by authorization failure and won&#39;t create a 400 error, but will enter in the if branch we just defined and produce the following message.
+
+![img/like_self.png](img/like_self.png)
+
+#### Buttons (on show view)
+
+On the show view of a photo, two buttons allow a user to like or report the photo. 
+
+![img/like.png](img/like.png)
+
+The report asks for confirmation.
+
+![img/report.png](img/report.png)
+
+As soon as a photo is reported, the admin view changes: there is an additionnal button ***&quot;New Reports! (X)&quot;*** in the navigation bar, where `X` is the number of reported photos, that redirect to  `/photos/reported`. It displays the same interface as the photos index, but only photos with a `report_count` greater than 0 and ordered by this count, and then by date.
+
+If the photo is reported, an admin has a another option, to reset the `report_count`. It also asks for confirmation. Of course, it may also edit or delete the picture itself, or even go to the user&#39;s profile and delete or ban him, as an admin has managing rights.
+
+![img/reset.png](img/reset.png)
+
+#### Visibility (on index and show views)
+The view count is incremented each time anyone loads the page (use refresh to force a new view).
+
+On the index and show views, next to each photo are visible, for every visitor, the number of views (#V), likes (#L) and cats (#C), in the following form:
+
+ #V&amp;#8635; #L&amp;#9829; #C&amp;#128049; 
+ 
+If the user can report the photo and the photo is reported (has a `report_count` #R greater than 0), then it will be:
+
+ #V&amp;#8635; #L&amp;#9829; #C&amp;#128049; #R&amp;#9888; 
+
+Moreover, if the user can manage the photo (it&#39;s a connected user owner of the photo or with admin rights), it will see an orange banner &quot;REPORTED&quot;. It will be clearly visible that he should take action (edit or delete the photo). 
+
+On the index of photos, it will look like this:
+
+![img/VLCR_index.png](img/VLCR_index.png)
+
+And on the show view of a specific photo, like this (in the footer):
+
+![img/VLCR_show.png](img/VLCR_show.png)
+
+### Banning users
+
+TODO.
+
+### Layouts and partial views
+
+All index views use the same layout (boxes of items) in a partial view `_grid`, with two parameters `@title` and `@collection`, where `collection` may be `photos`, `cats`, `users` or `hashtags`. 
+
+- This allows the usage of the same layout in the home screen (recent photos), the photos listing, the photos of a cat, the photos uploaded by a user and the result of photos.
+- It also allows the presence of several partial views on the same page, as on the home screen (the most recent of all collection) or the search results.
+
+## Project Management 
+###### (*Gestion de projet*)
+
+### Initial Iterations plan
+
+#### Week 8-9 (18.04. - 01.05.2016)
+
+- basic structure of whole project (scaffold, db, basic usable layout...)
+- no permissions: basic CRUD operations on everything
+
+#### Week 10-11 (02.05. - 15.05.2016)
+
+- account creation and authentification (with Devise)
+- permissions (guest, user, admin) (with CanCanCan)
+- basic upload form, with tagging cats and hashtags
+
+#### Week 12-13-14 (16.05. - 05.06.2016)
+
+- AJAX: autocompletion of hashtags in upload form
+- AJAX: update of views/likes count asynchronous (by the user who viewed/liked the photos)
+- pretty upload form
+- clean and pretty layout (UI)
+- report and presentations preparations
+
+#### Week 15-16 (06.06 - 19.06.2016)
+
+Oral presentations
+
+### Actual Management
+
+Some elements were shifted around a little across iterations. Per example, we had planned to implement a &quot;simple&quot; like with a GET on `photos/:id/like`, that would reload the page, during the first iteration, but we decided to do it directly with AJAX in the third iteration.
+
+Globally, this project was very well managed, all iterations are fully finished, and the team completed the work successfully and quite well balanced.
+
+## Project state 
+###### (*Etat des lieux*)
+
+In general, the project is completed and follows the initial plan, and all main features have been implemented, including the banning and reporting features that were important for such a website. 
+
+Some details were not implemented, but they don&#39;t affect in any way the normal website workflow.
+
+Not implemented: 
+
+- auto-completion of hashtags in upload form  (see AJAX section)
+- &quot;merging&quot; multiple ownerless cats, or an ownerless cat into an owned cat (removing duplicates)
+- keeping track of creator of cats, especially for ownerless cast: once a cat is created ownerless, only the admin can take care of him. It&#39;s the same if someone abandons his own cat.
+- catnonymous is not automatically tagged if no other cat is tagged (but it is still possible to tag him manually)
+
+Known bugs / glitches:
+
+- the upload form requires a refresh before working properly with the multiple tags. This is due to the javascript not being loaded, but we have not been able to discern why.
+
+
+## Conclusion
+
+Globally this project was a success and we learned a lot of things. 
+
+However, 
+
+## Annexes
+
+### Installation Indications
+
+#### Prerequesites
+
+You need on your system
+
+- `ruby` (tested with 2.2.3p173)
+- `rails` (tested with 4.2.5.1)
+- `mysql`
+- `imagemagick`. It comes by default on most linux distribution, otherwise use your favorite packet manager ton get it, like un Linux `sudo apt-get install imagemagick` or on MacOS X `brew install imagemagick`
+
+#### Configuration
+
+It is necessary to set up `mysql` with a database `catstagram` first, and to check database connection settings in `config/database.yml`. Follow theses steps
+
+- Create a table named `Catstagram` in your mysql editor.
+- Run mysql
+- Move to the project directory: `cd Catstagram`
+- Update the database config (host, user, password) of the file `Catstagram/config/database.yml` using your favorite editor (`nano`, `vim`, etc)
+- Run the following command to install &amp; update bundles: `bundle install; bundle update`
+- Import the latest migrations: `rake db:migrate`
+- Run the server: `rails s`
+
+#### Launch
+
+When you&#39;re done with database configuation, the project is production-ready, just type:
+</code></pre></div>
+
+<p>rails s
+```</p>
+
+<p>The server is now running and reachable at <code>server:port</code>, namely <a href="localhost:3000">localhost:3000</a> if you run it on your own machine with default settings.</p>
+
+<h4 id="toc_20">Fixtures</h4>
+
+<p>The project is furnished with fixtures that will populate the database with a few examples, create the necessary roles to see the website in action, and set up an admin account. To load the fixtures type:</p>
+
+<div><pre><code class="language-none">rake db:fixtures:load</code></pre></div>
+
+<p>You may login as an admin with the following account:</p>
+
+<div><pre><code class="language-none">email: admin@cat.com
+login: admin1</code></pre></div>
+
+<p>The other accounts are simple users, all with <code>login:user12</code>:</p>
+
+<div><pre><code class="language-none">paranoodle@cat.com (regular user)
+val@cat.com (regular user)
+bad@cat.com (banned users)
+dev@cat.com (tester)</code></pre></div>
+
+<h3 id="toc_21">Usage Manual</h3>
+
+<h6 id="toc_22">(<em>Mode d&#39;emploi)</em></h6>
+
+<p>In all screenshots:</p>
+
+<ul>
+<li><strong>black</strong>: comment, some explanations</li>
+<li><strong>red</strong>: clickable items</li>
+<li><strong>blue</strong>: pay attention to new item (appeared with the updated permission)</li>
+</ul>
+
+<h4 id="toc_23">As Guest</h4>
+
+<ul>
+<li>View the main page - <code>photos_controller#index_main</code></li>
+</ul>
+
+<p><img src="screens/02.png" alt="manual"></p>
+
+<ul>
+<li>View all users - <code>users_controller#index</code></li>
+</ul>
+
+<p><img src="screens/03.png" alt="manual"></p>
+
+<ul>
+<li>View user profiles - <code>users_controller#show</code></li>
+</ul>
+
+<p><img src="screens/04.png" alt="manual"></p>
+
+<ul>
+<li>View all cats - <code>cats_controller#index</code></li>
+</ul>
+
+<p><img src="screens/05.png" alt="manual"></p>
+
+<ul>
+<li>View cat profiles - <code>cats_controller#show</code></li>
+</ul>
+
+<p><img src="screens/06.png" alt="manual"></p>
+
+<ul>
+<li>View all hashtags - <code>hashtags_controller#index</code></li>
+</ul>
+
+<p><img src="screens/07.png" alt="manual"></p>
+
+<ul>
+<li>View photos by hashtag -  <code>hashtags_controller#show</code></li>
+</ul>
+
+<p><img src="screens/09.png" alt="manual"></p>
+
+<ul>
+<li>View all photos - <code>photos_controller#index</code></li>
+</ul>
+
+<p><img src="screens/08.png" alt="manual"></p>
+
+<ul>
+<li>View photos by user - <code>users_controller#show</code></li>
+</ul>
+
+<p><img src="screens/.png" alt="manual"></p>
+
+<ul>
+<li>View photos by cat - <code>cats_controller#show</code></li>
+</ul>
+
+<p><img src="screens/.png" alt="manual"></p>
+
+<ul>
+<li>View photo via direct link (increments view count) <code>photos_controller#show</code></li>
+</ul>
+
+<p><img src="screens/10.png" alt="manual"></p>
+
+<ul>
+<li>Search photos - <code>photos_controller#search</code></li>
+</ul>
+
+<p><img src="screens/11.png" alt="manual"></p>
+
+<ul>
+<li>Create an account and update an account (<em>sign up</em>) - default <code>Devise::RegistrationsController</code> and <code>registrations_controller</code> (for custom values of forms)</li>
+</ul>
+
+<p><img src="screens/12.png" alt="manual"></p>
+
+<p>And it lands on the edit page of the user (see specific section).</p>
+
+<ul>
+<li>Log in to/log out from an existing account (<em>sign in</em>) - default <code>Devise::SessionController</code></li>
+</ul>
+
+<p><img src="screens/13.png" alt="manual"></p>
+
+<p>And confirmation:</p>
+
+<p><img src="screens/14.png" alt="manual"></p>
+
+<ul>
+<li>Get a 403 Unauthorized Error when accessing a forbidden page <code>application_controller.rb</code> for <code>rescue_from CanCan::AccessDenied</code></li>
+</ul>
+
+<p><img src="screens/18.png" alt="manual"></p>
+
+<h4 id="toc_24">As User</h4>
+
+<ul>
+<li>Edit their own profile - <code>users_controller#edit</code></li>
+</ul>
+
+<p>Go to <em>Change password</em> to edit password and/or email, go to <em>Edit profile</em> to change username, avatar, biography.</p>
+
+<p><img src="screens/15.png" alt="manual"></p>
+
+<p>Form to edit password and/or email</p>
+
+<p><img src="screens/16.png" alt="manual"></p>
+
+<p>Form to edit username, avatar, biography.</p>
+
+<p><img src="screens/17.png" alt="manual"></p>
+
+<ul>
+<li>Upload photos - <code>photos_controller#new</code></li>
+</ul>
+
+<p>On the main screen of photos, type the button <em>New photo</em></p>
+
+<p><img src="screens/19.png" alt="manual"></p>
+
+<p>And fill the form</p>
+
+<p><img src="screens/20.png" alt="manual"></p>
+
+<p>And get confirmation.</p>
+
+<p><img src="screens/21.png" alt="manual"></p>
+
+<ul>
+<li>Edit their own photos - <code>photos_controller#edit</code></li>
+</ul>
+
+<p>On a photo you own, click <em>Edit</em></p>
+
+<p><img src="screens/22.png" alt="manual"></p>
+
+<p>Fill the form</p>
+
+<p><img src="screens/23.png" alt="manual"></p>
+
+<p>And get confirmation.</p>
+
+<ul>
+<li>Delete their own photos - <code>photos_controller#destroy</code></li>
+</ul>
+
+<p>On a photo you own, click <em>Delete</em>, confirm,</p>
+
+<p><img src="screens/24.png" alt="manual"></p>
+
+<p>And get confirmation.</p>
+
+<p><img src="screens/25.png" alt="manual"></p>
+
+<ul>
+<li>Create a new cat profile - <code>cats_controller#new</code></li>
+</ul>
+
+<p>On the cats main page, click <em>New cat</em></p>
+
+<p><img src="screens/26.png" alt="manual"></p>
+
+<p>Fill the form</p>
+
+<p><img src="screens/27.png" alt="manual"></p>
+
+<p>And get confirmation.</p>
+
+<p><img src="screens/28.png" alt="manual"></p>
+
+<ul>
+<li>Edit their own cat profiles - <code>cats_controller#edit</code></li>
+</ul>
+
+<p>On a cat you own, click <em>Edit</em></p>
+
+<p><img src="screens/31.png" alt="manual"></p>
+
+<p>Fill the form</p>
+
+<p><img src="screens/29.png" alt="manual"></p>
+
+<p>And get confirmation:</p>
+
+<p><img src="screens/30.png" alt="manual"></p>
+
+<ul>
+<li>Delete their own cat profiles - <code>cats_controller#destroy</code></li>
+</ul>
+
+<p>On a cat you own, click <em>Delete</em></p>
+
+<p><img src="screens/32.png" alt="manual"></p>
+
+<p>confirm, and get confirmation:</p>
+
+<p><img src="screens/33.png" alt="manual"></p>
+
+<ul>
+<li>Delete their own profile - <code>users_controller#destroy</code></li>
+</ul>
+
+<p>On your own profile, click <em>Delete</em></p>
+
+<p><img src="screens/39.png" alt="manual"></p>
+
+<p>Confirm</p>
+
+<p><img src="screens/40.png" alt="manual"></p>
+
+<p>And get confirmation.</p>
+
+<p><img src="screens/42.png" alt="manual"></p>
+
+<p>Or alternatively, go to <em>Change password</em>, and click <em>Cancel my account</em></p>
+
+<p><img src="screens/41.png" alt="manual"></p>
+
+<p>And get confirmation.</p>
+
+<p><img src="screens/42.png" alt="manual"></p>
+
+<ul>
+<li>Report bad photos - <code>photos_controller#report</code></li>
+</ul>
+
+<p>On a photo you don&#39;t own, click <em>Report</em></p>
+
+<p><img src="screens/34.png" alt="manual"></p>
+
+<p>confirm</p>
+
+<p><img src="screens/35.png" alt="manual"></p>
+
+<p>And get confirmation:</p>
+
+<p><img src="screens/36.png" alt="manual"></p>
+
+<ul>
+<li>View the report count of a photo - <code>photos_controller#show</code></li>
+</ul>
+
+<p><img src="screens/36.png" alt="manual"></p>
+
+<ul>
+<li>Like photos - <code>photos_controller#like</code></li>
+</ul>
+
+<p>On a photo you don&#39;t own, click <em>Like</em></p>
+
+<p><img src="screens/37.png" alt="manual"></p>
+
+<p>And it updates automatically without reloading (admin)</p>
+
+<p><img src="screens/38.png" alt="manual"></p>
+
+<h4 id="toc_25">As Admin</h4>
+
+<ul>
+<li>Receive alerts of new reports - no controllers involved, just an alert &amp; number in the navigation bar</li>
+</ul>
+
+<p>See next screen.</p>
+
+<ul>
+<li>View new reports - <code>photos_controller#reported</code></li>
+</ul>
+
+<p>Click <em>New reports</em> in the navigation bar</p>
+
+<p><img src="screens/43.png" alt="manual"></p>
+
+<ul>
+<li>Reset report counts - <code>photos_controller#reset</code></li>
+</ul>
+
+<p>On a reported photo, click <em>Reset count</em></p>
+
+<p><img src="screens/44.png" alt="manual"></p>
+
+<p>and get confirmation.</p>
+
+<p><img src="screens/45.png" alt="manual"></p>
+
+<ul>
+<li>Remove reported photos - <code>photos_controller#destroy</code></li>
+</ul>
+
+<p>On a reported photo, click <em>Delete</em></p>
+
+<p><img src="screens/46.png" alt="manual"></p>
+
+<ul>
+<li>Ban (and unban) user - <code>users_controller#ban</code> and <code>users_controller#ban_update</code></li>
+</ul>
+
+<p>On a user profile, click <em>Ban</em></p>
+
+<p><img src="screens/47.png" alt="manual"></p>
+
+<p>Change the date (in the future to ban, in the past to unban), with calendar <em>on chrome</em>, with textfield on <em>Firefox</em></p>
+
+<p><img src="screens/48.png" alt="manual"></p>
+
+<p>Click <em>Ban</em></p>
+
+<p><img src="screens/49.png" alt="manual"></p>
+
+<p>And get confirmation.</p>
+
+<p><img src="screens/50.png" alt="manual"></p>
+
+<p>Same applies to unban.</p>
+
+<ul>
+<li>View banned users - <code>users_controller#banned</code></li>
+</ul>
+
+<p>From the admin menu, click <em>View Banned Users</em></p>
+
+<p><img src="screens/51.png" alt="manual"></p>
+
+<ul>
+<li>Remove user - <code>users_controller#destroy</code></li>
+</ul>
+
+<p>Click on <em>Delete</em>, as for a regular user.</p>
+
+<ul>
+<li>Create empty new hashtag - <code>hashtags_controller#new</code></li>
+</ul>
+
+<p><img src="screens/54.png" alt="manual"></p>
+
+<ul>
+<li>View editable list of all hashtags - <code>hashtags_controller#index_admin</code></li>
+</ul>
+
+<p><img src="screens/53.png" alt="manual"></p>
+
+<ul>
+<li>Edit everything - <code>[NAME]s_controller#edit</code> and <code>users_controller#edit_roles</code> and <code>users_controller#save_roles</code></li>
+</ul>
+
+<p>As in regular user, but for a cat additionnal options for owner, to remove/add/change ownership</p>
+
+<p><img src="screens/55.png" alt="manual"></p>
+
+<p>And get confirmation</p>
+
+<p><img src="screens/56.png" alt="manual"></p>
+
+<ul>
+<li>List roles</li>
+</ul>
+
+<p><img src="screens/57.png" alt="manual"></p>
+
+<ul>
+<li>Edit roles</li>
+</ul>
+
+<p><img src="screens/58.png" alt="manual"></p>
+
+<ul>
+<li>Destroy everything - <code>[NAME]s_controller#destroy</code></li>
+</ul>
+
+<p>As seen in previous screens.</p>
+
+
+</body>
+
+</html>

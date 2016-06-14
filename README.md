@@ -73,10 +73,48 @@ If you need more details, check [here](specs_report) the complete documentation,
 
 ## Final Report
 
-The final report, with full documentation and usage manual, is available [here](specs_report)
+The final report, with full documentation and usage manual, is available [here](specs_report).
 
 ## Slides of the presentation
-***In french***, available [here](specs_report/slides.pdf)
+***In french***, available [here](specs_report/slides.pdf).
+
+## A few screenshots
+
+**Main page**
+
+![img](specs_report/screens_origin/02.png)
+
+**Search query result**
+
+![img](specs_report/screens_origin/11.png)
+
+**Photo view**
+
+![img](specs_report/screens_origin/22.png)
+
+**Cat view**
+
+![img](specs_report/screens_origin/31.png)
+
+**User view**
+
+![img](specs_report/screens_origin/04.png)
+
+**Hashtag view**
+
+![img](specs_report/screens_origin/09.png)
+
+**Admin views**
+
+- **see reported photos**
+
+![img](specs_report/screens_origin/43.png)
+
+- **see banned users**
+
+![img](specs_report/screens_origin/51.png)
+
+Many others are described in manual, available [here](specs_report) under **Usage Manual** section.
 
 ## Useful commands
 

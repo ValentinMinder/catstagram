@@ -43,21 +43,42 @@
 
       <% if user_signed_in? %>
         <% if current_user.is_admin? %>
+          <!-- admin can assign any ownership -->
           <div class="form-group">
-            <%= f.label "Cat Owner", :class => "col-lg-2 control-label" %>
+            <%= f.label "Has an owner?", :class => "col-lg-2 control-label" %>
             <div class="col-lg-10">
+              <%= f.radio_button :user_id, @cat.user_id %>
+              <%= f.label :user_id, "Yes", :value => :user_id %><br>
+              
               <%= f.collection_select :user_id, User.all, :id, :username, {}, {:class => "form-control"} %><br>
-            </div>
-        <% else %>
-          <div class="form-group">
-            <%= f.label "Is this your cat?", :class => "col-lg-2 control-label" %>
-            <div class="col-lg-10">
-              <%= f.radio_button :user_id, current_user.id %>
-              <%= f.label :user_id, "Yes", :value => current_user.id %><br>
+              <!-- admin can remove ownership -->
               <%= f.radio_button :user_id, nil %>
               <%= f.label :user_id, "No", :value => nil %>
             </div>
-          </div>
+        <% else %>
+          <!-- user & new cat: your cat or ownerless cat? -->
+          <% if @cat.new_record? %> 
+            <div class="form-group">
+              <%= f.label "Is this your cat?", :class => "col-lg-2 control-label" %>
+              <div class="col-lg-10">
+                <%= f.radio_button :user_id, current_user.id %>
+                <%= f.label :user_id, "Yes", :value => current_user.id %><br>
+                <%= f.radio_button :user_id, nil %>
+                <%= f.label :user_id, "No", :value => nil %>
+              </div>
+            </div>
+          <!-- user & existing cat: possibility to abandon the cat -->
+          <% else %>
+            <div class="form-group">
+              <%= f.label "Abandon your cat?", :class => "col-lg-2 control-label" %>
+              <div class="col-lg-10">
+                <%= f.radio_button :user_id, current_user.id %>
+                <%= f.label :user_id, "No", :value => current_user.id %><br>
+                <%= f.radio_button :user_id, nil %>
+                <%= f.label :user_id, "Yes", :value => nil %>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
 

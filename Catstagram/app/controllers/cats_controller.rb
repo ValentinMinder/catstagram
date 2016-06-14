@@ -31,6 +31,10 @@ class CatsController < ApplicationController
   # POST /cats.json
   def create
     @cat = Cat.new(cat_params)
+    # cleaning an empty user_id with a nil value in db
+    if (cat_params[:user_id] == 'on' or cat_params[:user_id] == 0)
+      @cat.update_attribute(:user_id, nil)
+    end
 
     respond_to do |format|
       if @cat.save
@@ -46,13 +50,27 @@ class CatsController < ApplicationController
   # PATCH/PUT /cats/1
   # PATCH/PUT /cats/1.json
   def update
-    respond_to do |format|
-      if @cat.update(cat_params)
-        format.html { redirect_to @cat, notice: 'Cat was successfully updated.' }
-        format.json { render :show, status: :ok, location: @cat }
-      else
-        format.html { render :edit }
-        format.json { render json: @cat.errors, status: :unprocessable_entity }
+    # cleaning an empty user_id with a nil value in db
+    if (cat_params[:user_id] == 'on' or cat_params[:user_id] == 0)
+      @cat.update_attribute(:user_id, nil)
+      respond_to do |format|
+        if @cat.update(cat_params_noid)
+          format.html { redirect_to @cat, notice: 'Cat was successfully updated.' }
+          format.json { render :show, status: :ok, location: @cat }
+        else
+          format.html { render :edit }
+          format.json { render json: @cat.errors, status: :unprocessable_entity }
+        end
+      end
+    else
+      respond_to do |format|
+        if @cat.update(cat_params)
+          format.html { redirect_to @cat, notice: 'Cat was successfully updated.' }
+          format.json { render :show, status: :ok, location: @cat }
+        else
+          format.html { render :edit }
+          format.json { render json: @cat.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -80,5 +98,10 @@ class CatsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def cat_params
       params.require(:cat).permit(:catname, :description, :city, :birth_time, :user_id)
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def cat_params_noid
+      params.require(:cat).permit(:catname, :description, :city, :birth_time)
     end
 end

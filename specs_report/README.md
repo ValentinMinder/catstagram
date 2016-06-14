@@ -214,7 +214,7 @@ As is, when an image is uploaded, we automatically save a resized copy of it for
 version :thumb do
   process :resize_to_fit => [100, 100]
 end
- ```
+```
  
 This saves a thumbnail of the image. If our image URL is accessible at `photo.image_url`, the thumbnail URL is accessible at `photo.image_url.thumb.url`.
 

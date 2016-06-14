@@ -14,8 +14,18 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password:
-  socket: /var/run/mysqld/mysqld.sock
+  password: 
+  port: 3306
+  socket: /tmp/mysql.sock 
+  
+#  default config
+#  username: root
+#  password:
+#  socket: /var/run/mysqld/mysqld.sock
+#  alternative configuration, with MAMP on macosx
+#  username: root
+#  password: 
+#  socket: /Applications/MAMP/tmp/mysql/mysql.sock
 
 development:
   <<: *default

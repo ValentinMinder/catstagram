@@ -138,18 +138,85 @@ As the admin has CRUD rights on everything, they can do everything a user can on
 ## Software structure 
 ###### (*Structure du logiciel*)
 
-TODO.
+We use Rails' standard MVC structure, with Models in `app/models`, Views as webpages in `app/views` and Controllers in `app/controllers`.
+
+### Guest actions:
+
+- View the main page - `photos_controller#index_main`
+- View all users - `users_controller#index`
+- View user profiles - `users_controller#show`
+- View all cats - `cats_controller#index`
+- View cat profiles - `cats_controller#show`
+- View all hashtags - `hashtags_controller#index`
+- View all photos - `photos_controller#index`
+- View photos by hashtag -  `hashtags_controller#show`
+- View photos by user - `users_controller#show`
+- View photos by cat - `cats_controller#show`
+- View photo via direct link (increments view count) ` photos_controller#show`
+- Search photos - `photos_controller#search`
+- Create an account and update an account (*sign up*) - default `Devise::RegistrationsController` and `registrations_controller` (for custom values of forms)
+- Log in to/log out from an existing account (*sign in*) - default `Devise::SessionController`
+- `users_controller#new` and `users_controller#create` are removed, because there are handled by devise sign-up.
+- Get a 403 Unauthorized Error when accessing a forbidden page `application_controller.rb` for `rescue_from CanCan::AccessDenied`
+
+### User Actions
+
+- Edit their own profile - `users_controller#edit`
+- Upload photos - `photos_controller#new`
+- Edit their own photos - `photos_controller#edit`
+- Delete their own photos - `photos_controller#destroy`
+- Create a new cat profile - `cats_controller#new`
+- Edit their own cat profiles - `cats_controller#edit`
+- Delete their own cat profiles - `cats_controller#destroy`
+- Delete their own profile - `users_controller#destroy`
+- Report bad photos - `photos_controller#report`
+- View the report count of a photo - `photos_controller#show`
+- Like photos - `photos_controller#like`
+
+### Admin Actions
+
+- Receive alerts of new reports - no controllers involved, just an alert & number in the navigation bar
+- View new reports - `photos_controller#reported`
+- Reset report counts - `photos_controller#reset`
+- Remove reported photos - `photos_controller#destroy`
+- Ban (and unban) user - `users_controller#ban` and `users_controller#ban_update`
+- View banned users - `users_controller#banned`
+- Remove user - `users_controller#destroy`
+- Create empty new hashtag - `hashtags_controller#new`
+- View editable list of all hashtags - `hashtags_controller#index_admin`
+- Edit everything - `[NAME]s_controller#edit` and `users_controller#edit_roles` and `users_controller#save_roles`
+- Destroy everything - `[NAME]s_controller#destroy`
 
 ## Technical considerations 
 ###### (*Implémentation*)
 
 ### AJAX in practice
 
-TODO.
+While our original plan was to allow optional tag auto-completion during photo upload, this proved to be beyond our skills even after extensive reading on the subject. It was already hard enough implementing dynamic text fields (pressing the "Add Tag" button adds a new text field whose content *will* be correctly saved), but we couldn't find how to work an optional drop-down in without using a `collection_select`, which... we can't type in.
+
+So we went with our second idea.
+
+The final AJAX we use allows us to *like* photos without reloading the page, and updates the like count on the photo accordingly, after which the *like* button disappears.
+
+This is done via three files:
+
+- In `app/views/photos/show.html.erb`, we set up the like button `link_to` with the option `remote: true`, along with a specific id so we can refer back to it. We also give an id to a span containing the `@photo.like_count` value.
+- In `app/controllers/photos_controller.rb`, in the `like` function, we render the `update_likes.js` file after we finish the checks and modifications we wanted.
+- In `app/views/photos/update_likes.js`, we have simple jQuery commands to hide the like button via its id, and replace the old `like_count` in the span with the new `like_count` value we computed in the controller.
 
 ### Librairies used
 
-TODO.
+The only major library we used was ImageMagick, for the purpose of automatically resizing images to create thumbnails. While we could have just used HTML tags to keep only one copy of each image and display, this requires downloading all the images at full size and slows down the page loading considerably, especially for users with poor connections.
+
+As is, when an image is uploaded, we automatically save a resized copy of it for use as thumbnails. This is done in the `app/uploaders/image_uploader.rb` file:
+
+```
+version :thumb do
+  process :resize_to_fit => [100, 100]
+end
+ ```
+ 
+This saves a thumbnail of the image. If our image URL is accessible at `photo.image_url`, the thumbnail URL is accessible at `photo.image_url.thumb.url`.
 
 ### Like, Report & Reset Report of PHOTOS
 
@@ -206,7 +273,7 @@ And on the show view of a specific photo, like this (in the footer):
 
 ### Banning users
 
-To be written.
+TODO.
 
 ### Layouts and partial views
 
@@ -245,16 +312,34 @@ Oral presentations
 
 ### Actual Management
 
-TODO.
+Some elements were shifted around a little across iterations. Per example, we had planned to implement a "simple" like with a GET on `photos/:id/like`, that would reload the page, during the first iteration, but we decided to do it directly with AJAX in the third iteration.
+
+Globally, this project was very well managed, all iterations are fully finished, and the team completed the work successfully and quite well balanced.
 
 ## Project state 
 ###### (*Etat des lieux*)
 
-TODO.
+In general, the project is completed and follows the initial plan, and all main features have been implemented, including the banning and reporting features that were important for such a website. 
+
+Some details were not implemented, but they don't affect in any way the normal website workflow.
+
+Not implemented: 
+
+- auto-completion of hashtags in upload form  (see AJAX section)
+- "merging" multiple ownerless cats, or an ownerless cat into an owned cat (removing duplicates)
+- keeping track of creator of cats, especially for ownerless cast: once a cat is created ownerless, only the admin can take care of him. It's the same if someone abandons his own cat.
+- catnonymous is not automatically tagged if no other cat is tagged (but it is still possible to tag him manually)
+
+Known bugs / glitches:
+
+- the upload form requires a refresh before working properly with the multiple tags. This is due to the javascript not being loaded, but we have not been able to discern why.
+
 
 ## Conclusion
 
-TODO.
+Globally this project was a success and we learned a lot of things. 
+
+However, 
 
 ## Annexes
 
@@ -278,6 +363,7 @@ It is necessary to set up `mysql` with a database `catstagram` first, and to che
 - Move to the project directory: `cd Catstagram`
 - Update the database config (host, user, password) of the file `Catstagram/config/database.yml` using your favorite editor (`nano`, `vim`, etc)
 - Run the following command to install & update bundles: `bundle install; bundle update`
+- Import the latest migrations: `rake db:migrate`
 - Run the server: `rails s`
 
 #### Launch
@@ -317,5 +403,13 @@ dev@cat.com (tester)
 
 ### Usage Manual 
 ###### (*Mode d'emploi)*
+
+#### As Guest
+
+
+#### As User
+
+
+#### As Admin
 
 TODO. (with printscreens)
